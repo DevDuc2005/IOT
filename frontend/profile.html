@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hồ sơ cá nhân — IoT Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <!-- Thanh điều hướng bên trái (Sidebar) -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="M20 12h2"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+            <path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path>
+            <path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path>
+          </svg>
+        </div>
+        <div>
+          <strong>IoT Control</strong>
+          <small id="sidebar-mode-label">DỮ LIỆU THỰC</small>
+        </div>
+        <button type="button" id="mobile-close-btn" class="mobile-close" aria-label="Đóng menu">✕</button>
+      </div>
+
+      <nav>
+        <a href="/" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+            <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+            <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+            <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+          </svg>
+          <span>Tổng quan</span>
+        </a>
+
+        <a href="/sensors.html" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          <span>Giám sát cảm biến</span>
+        </a>
+
+        <a href="/history.html" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+            <path d="M12 7v5l4 2"></path>
+          </svg>
+          <span>Lịch sử hoạt động</span>
+        </a>
+
+        <a href="/profile.html" class="nav-item nav-active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="5"></circle>
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+          </svg>
+          <span>Hồ sơ cá nhân</span>
+          <span class="active-bar"></span>
+        </a>
+      </nav>
+    </aside>
+
+    <div id="mobile-overlay" class="mobile-overlay" style="display: none;"></div>
+
+    <!-- Nội dung chính -->
+    <main class="main">
+      <div class="mobile-bar">
+        <button type="button" id="mobile-open-btn" class="hamburger" aria-label="Mở menu">☰</button>
+        <strong>IoT Control</strong>
+      </div>
+
+      <div class="content">
+        <section class="card profile-card">
+          <div class="profile-head">
+            <div id="profile-avatar" class="profile-avatar">U</div>
+            <div>
+              <h2 id="profile-name">Đang tải hồ sơ…</h2>
+              <p id="profile-account">--</p>
+              <span id="profile-role" class="tag tag-ok">ADMIN</span>
+            </div>
+          </div>
+
+          <div class="section-head">
+            <h3>Ảnh đại diện và thông tin tài khoản</h3>
+            <button type="button" id="btn-edit-profile" class="btn outline">Chỉnh sửa hồ sơ</button>
+          </div>
+
+          <p id="profile-message" role="status" style="display: none;"></p>
+
+          <!-- Chế độ xem thông tin -->
+          <div id="profile-view">
+            <div class="profile-grid">
+              <div class="profile-field">
+                <small>Họ tên</small>
+                <strong id="view-name">--</strong>
+              </div>
+              <div class="profile-field">
+                <small>Tài khoản</small>
+                <strong id="view-username">--</strong>
+              </div>
+              <div class="profile-field">
+                <small>Email</small>
+                <strong id="view-email">--</strong>
+              </div>
+              <div class="profile-field">
+                <small>Số điện thoại</small>
+                <strong id="view-phone">--</strong>
+              </div>
+              <div class="profile-field">
+                <small>Vai trò</small>
+                <strong id="view-role">--</strong>
+              </div>
+            </div>
+
+            <h3>Liên kết dự án</h3>
+            <div class="profile-grid">
+              <div class="project-link">
+                <h4>GitHub Repository</h4>
+                <div id="view-github"><span>Chưa thêm liên kết</span></div>
+              </div>
+              <div class="project-link">
+                <h4>Figma Design</h4>
+                <div id="view-figma"><span>Chưa thêm liên kết</span></div>
+              </div>
+              <div class="project-link">
+                <h4>System Architecture</h4>
+                <div id="view-architecture"><span>Chưa thêm liên kết</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chế độ chỉnh sửa thông tin -->
+          <form id="profile-edit-form" style="display: none;">
+            <fieldset id="profile-edit-fieldset" class="profile-edit-fields">
+              <div class="avatar-editor">
+                <label>
+                  Đổi ảnh đại diện
+                  <input type="file" id="avatar-file-input" accept="image/jpeg,image/png,image/webp" />
+                  <small>JPG, PNG, WebP • tối đa 5 MB • ảnh được cắt vuông ở giữa.</small>
+                </label>
+                <button type="button" id="btn-remove-avatar" class="btn outline" style="display: none;">Xóa ảnh</button>
+              </div>
+
+              <div class="profile-grid">
+                <label>
+                  Họ tên
+                  <input id="edit-name" type="text" required maxlength="100" />
+                </label>
+                <label>
+                  Tên tài khoản đăng nhập
+                  <input
+                    id="edit-username"
+                    type="text"
+                    maxlength="40"
+                    pattern="[a-zA-Z0-9_.-]{3,40}"
+                    title="3–40 ký tự: chữ không dấu, số, dấu chấm, gạch dưới, gạch ngang"
+                  />
+                  <small>Có thể đăng nhập bằng tài khoản này hoặc email. Để trống để chỉ dùng email.</small>
+                </label>
+                <label>
+                  Email
+                  <input id="edit-email" type="email" required maxlength="200" />
+                </label>
+                <label>
+                  Số điện thoại
+                  <input id="edit-phone" type="tel" maxlength="30" />
+                </label>
+                <label>
+                  GitHub Repository
+                  <input id="edit-github" type="url" maxlength="1000" />
+                </label>
+                <label>
+                  Figma Design
+                  <input id="edit-figma" type="url" maxlength="1000" />
+                </label>
+                <label>
+                  System Architecture
+                  <input id="edit-architecture" type="url" maxlength="1000" />
+                </label>
+              </div>
+
+              <div class="button-row">
+                <button type="submit" class="btn primary">Lưu thay đổi</button>
+                <button type="button" id="btn-cancel-edit" class="btn outline">Hủy</button>
+              </div>
+            </fieldset>
+          </form>
+
+          <!-- Đổi mật khẩu -->
+          <div class="password-section">
+            <h3>Đổi mật khẩu</h3>
+            <p>Nhập mật khẩu hiện tại và mật khẩu mới (8–128 ký tự).</p>
+
+            <form id="password-form">
+              <fieldset id="password-fieldset" class="profile-edit-fields">
+                <div class="password-grid">
+                  <label class="password-label">
+                    Mật khẩu hiện tại
+                    <span class="password-field">
+                      <input id="cur-password" type="password" required minlength="1" maxlength="128" autocomplete="current-password" />
+                      <button type="button" class="password-eye" data-target="cur-password" title="Hiện mật khẩu">👁</button>
+                    </span>
+                  </label>
+
+                  <label class="password-label">
+                    Mật khẩu mới
+                    <span class="password-field">
+                      <input id="new-password" type="password" required minlength="8" maxlength="128" autocomplete="new-password" />
+                      <button type="button" class="password-eye" data-target="new-password" title="Hiện mật khẩu">👁</button>
+                    </span>
+                  </label>
+
+                  <label class="password-label">
+                    Xác nhận mật khẩu mới
+                    <span class="password-field">
+                      <input id="confirm-password" type="password" required minlength="8" maxlength="128" autocomplete="new-password" />
+                      <button type="button" class="password-eye" data-target="confirm-password" title="Hiện mật khẩu">👁</button>
+                    </span>
+                  </label>
+                </div>
+
+                <button type="submit" id="btn-change-password" class="btn primary">Đổi mật khẩu</button>
+              </fieldset>
+              <p id="password-message" class="password-message" role="status" style="display: none;"></p>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <button type="button" id="logout-btn" class="logout-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+        <polyline points="16 17 21 12 16 7"></polyline>
+        <line x1="21" x2="9" y1="12" y2="12"></line>
+      </svg>
+      Đăng xuất
+    </button>
+  </div>
+
+  <script type="module" src="/src/profile.js"></script>
+</body>
+</html>
+

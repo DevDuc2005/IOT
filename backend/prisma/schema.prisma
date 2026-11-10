@@ -1,0 +1,122 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+model SensorReading {
+  id          Int      @id @default(autoincrement())
+  temperature Float
+  humidity    Float
+  light       String
+  lightRaw    Int
+  createdAt   DateTime @default(now())
+  @@index([createdAt])
+}
+model DeviceEvent {
+  id         Int      @id @default(autoincrement())
+  led        Int
+  action     String
+  result     String
+  source     String   @default("ESP32")
+  user       String?
+  uptimeMs   Int?
+  createdAt  DateTime @default(now())
+  @@index([createdAt])
+}
+
+model User {
+  id           Int @id @default(autoincrement())
+  name         String
+  email        String @unique
+  phone        String @default("")
+  role         String @default("ADMIN")
+  username     String? @unique
+  avatar       String @default("")
+  passwordHash String
+  github       String @default("")
+  figma        String @default("")
+  architecture String @default("")
+}
+
+model Users {
+  id                 Int            @id @default(autoincrement())
+  name               String
+  email              String         @unique
+  password_hash      String
+  phone              String         @default("")
+  github             String         @default("")
+  figma              String         @default("")
+  system_architecture String        @default("") @map("System Architecture")
+  role               String         @default("ADMIN")
+  created_at         DateTime       @default(now())
+  updated_at         DateTime       @updatedAt
+  actions            ActionDevice[]
+
+  @@map("users")
+}
+
+model DeviceList {
+  id         Int          @id @default(autoincrement())
+  name       String
+  type       String
+  parent_id  Int?
+  gpio_pin   Int?
+  room       String       @default("Phòng 1")
+  status     String       @default("OFF")
+  is_online  Int          @default(1)
+  created_at DateTime     @default(now())
+  updated_at DateTime     @updatedAt
+  parent     DeviceList?  @relation("DeviceHierarchy", fields: [parent_id], references: [id])
+  children   DeviceList[] @relation("DeviceHierarchy")
+  sensors    SensorList[]
+  actions    ActionDevice[]
+
+  @@map("device_list")
+}
+
+model SensorList {
+  id            Int          @id @default(autoincrement())
+  controller_id Int
+  name          String
+  type          String
+  unit          String
+  gpio_pin      Int
+  created_at    DateTime     @default(now())
+  controller    DeviceList   @relation(fields: [controller_id], references: [id])
+  readings      DataSensor[]
+
+  @@map("sensor_list")
+}
+
+model DataSensor {
+  id          Int        @id @default(autoincrement())
+  sensor_id   Int
+  value       Float
+  recorded_at DateTime   @default(now())
+  sensor      SensorList @relation(fields: [sensor_id], references: [id])
+
+  @@index([recorded_at])
+  @@index([sensor_id])
+  @@map("data_sensor")
+}
+
+model ActionDevice {
+  id               Int        @id @default(autoincrement())
+  request_id       String
+  group_request_id String?
+  user_id          Int?
+  device_id        Int
+  action           String
+  status           String
+  error_message    String?
+  created_at       DateTime   @default(now())
+  finished_at      DateTime?
+  user             Users?     @relation(fields: [user_id], references: [id])
+  device           DeviceList @relation(fields: [device_id], references: [id])
+
+  @@index([created_at])
+  @@index([device_id])
+  @@map("action_device")
+}

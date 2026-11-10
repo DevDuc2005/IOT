@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tổng quan — IoT Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div class="shell shell-overview">
+    <!-- Thanh điều hướng bên trái (Sidebar) -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="M20 12h2"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+            <path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path>
+            <path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path>
+          </svg>
+        </div>
+        <div>
+          <strong>IoT Control</strong>
+          <small id="sidebar-mode-label">DỮ LIỆU THỰC</small>
+        </div>
+        <button type="button" id="mobile-close-btn" class="mobile-close" aria-label="Đóng menu">✕</button>
+      </div>
+
+      <nav>
+        <a href="/" class="nav-item nav-active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+            <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+            <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+            <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+          </svg>
+          <span>Tổng quan</span>
+          <span class="active-bar"></span>
+        </a>
+
+        <a href="/sensors.html" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          <span>Giám sát cảm biến</span>
+        </a>
+
+        <a href="/history.html" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+            <path d="M12 7v5l4 2"></path>
+          </svg>
+          <span>Lịch sử hoạt động</span>
+        </a>
+
+        <a href="/profile.html" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="5"></circle>
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+          </svg>
+          <span>Hồ sơ cá nhân</span>
+        </a>
+      </nav>
+    </aside>
+
+    <div id="mobile-overlay" class="mobile-overlay" style="display: none;"></div>
+
+    <!-- Nội dung chính -->
+    <main class="main">
+      <div class="mobile-bar">
+        <button type="button" id="mobile-open-btn" class="hamburger" aria-label="Mở menu">☰</button>
+        <strong>IoT Control</strong>
+      </div>
+
+      <div class="content overview-content">
+        <!-- 3 thẻ cảm biến -->
+        <div class="metrics">
+          <div class="card metric">
+            <div class="metric-row">
+              <span>Nhiệt độ</span>
+              <span class="metric-icon orange">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"></path>
+                </svg>
+              </span>
+            </div>
+            <div id="val-temperature" class="metric-value">--</div>
+            <div class="metric-foot">Đơn vị °C</div>
+          </div>
+
+          <div class="card metric">
+            <div class="metric-row">
+              <span>Độ ẩm</span>
+              <span class="metric-icon blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path>
+                </svg>
+              </span>
+            </div>
+            <div id="val-humidity" class="metric-value">--</div>
+            <div class="metric-foot">Đơn vị %</div>
+          </div>
+
+          <div class="card metric">
+            <div class="metric-row">
+              <span>Ánh sáng</span>
+              <span id="icon-light" class="metric-icon amber">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.32-11.32 1.41-1.41"></path>
+                </svg>
+              </span>
+            </div>
+            <div id="val-light" class="metric-value">--</div>
+            <div class="metric-foot">SÁNG / TỐI</div>
+          </div>
+        </div>
+
+        <!-- Hàng dưới: Biểu đồ môi trường & Điều khiển nhanh -->
+        <div class="two-col">
+          <!-- Biểu đồ môi trường -->
+          <div class="card chart-card">
+            <div class="section-head">
+              <div>
+                <h3>Biểu đồ môi trường</h3>
+                <p id="chart-subtitle">10 điểm gần nhất · Nhiệt độ (°C) và độ ẩm (%)</p>
+              </div>
+              <div class="chart-tabs" id="chart-tabs">
+                <button type="button" data-metric="both" class="selected">Nhiệt độ + Độ ẩm</button>
+                <button type="button" data-metric="temperature">Nhiệt độ</button>
+                <button type="button" data-metric="humidity">Độ ẩm</button>
+                <button type="button" data-metric="light">Ánh sáng</button>
+              </div>
+            </div>
+
+            <div id="chart-container" class="chart">
+              <div class="empty">Đang chờ dữ liệu từ thiết bị...</div>
+            </div>
+          </div>
+
+          <!-- Điều khiển nhanh -->
+          <div class="card quick-control">
+            <div class="section-head">
+              <h3>Điều khiển nhanh</h3>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2">
+                <path d="M12 2v10"></path>
+                <path d="M18.4 6.6a9 9 0 1 1-12.77.04"></path>
+              </svg>
+            </div>
+
+            <div class="quick-devices">
+              <div class="quick-device" data-led="1">
+                <span id="bulb-1" class="bulb small">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                    <path d="M9 18h6"></path>
+                    <path d="M10 22h4"></path>
+                  </svg>
+                </span>
+                <b>LED 1</b>
+                <span id="tag-1" class="tag tag-bad"><span class="tag-dot"></span>OFF</span>
+                <button type="button" id="switch-1" class="switch" aria-label="Bật tắt LED 1"><span></span></button>
+              </div>
+
+              <div class="quick-device" data-led="2">
+                <span id="bulb-2" class="bulb small">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                    <path d="M9 18h6"></path>
+                    <path d="M10 22h4"></path>
+                  </svg>
+                </span>
+                <b>LED 2</b>
+                <span id="tag-2" class="tag tag-bad"><span class="tag-dot"></span>OFF</span>
+                <button type="button" id="switch-2" class="switch" aria-label="Bật tắt LED 2"><span></span></button>
+              </div>
+
+              <div class="quick-device" data-led="3">
+                <span id="bulb-3" class="bulb small">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                    <path d="M9 18h6"></path>
+                    <path d="M10 22h4"></path>
+                  </svg>
+                </span>
+                <b>LED 3</b>
+                <span id="tag-3" class="tag tag-bad"><span class="tag-dot"></span>OFF</span>
+                <button type="button" id="switch-3" class="switch" aria-label="Bật tắt LED 3"><span></span></button>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <button type="button" id="btn-all-on" class="btn primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v10"></path>
+                  <path d="M18.4 6.6a9 9 0 1 1-12.77.04"></path>
+                </svg>
+                Bật tất cả
+              </button>
+              <button type="button" id="btn-all-off" class="btn outline">Tắt tất cả</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <button type="button" id="logout-btn" class="logout-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+        <polyline points="16 17 21 12 16 7"></polyline>
+        <line x1="21" x2="9" y1="12" y2="12"></line>
+      </svg>
+      Đăng xuất
+    </button>
+  </div>
+
+  <script type="module" src="/src/overview.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {hashPassword,verifyPassword,validAvatar} from './profile-security.js';
+test('password hashing verifies correct password and rejects wrong password',()=>{const hash=hashPassword('Valid-password-2026');assert.ok(verifyPassword('Valid-password-2026',hash));assert.equal(verifyPassword('incorrect',hash),false);assert.notEqual(hash,hashPassword('Valid-password-2026'));assert.ok(!hash.includes('Valid-password-2026'))});
+test('avatar allows removal and PNG signatures, rejects unsupported or oversized data',()=>{assert.ok(validAvatar(''));assert.ok(validAvatar('data:image/png;base64,'+Buffer.from([137,80,78,71,13,10,26,10,0,0,0,0]).toString('base64')));assert.equal(validAvatar('data:image/svg+xml;base64,PHN2Zz4='),false);assert.equal(validAvatar('data:image/png;base64,'+Buffer.from('not a real image').toString('base64')),false);assert.equal(validAvatar('data:image/jpeg;base64,'+Buffer.alloc(300001,255).toString('base64')),false)});

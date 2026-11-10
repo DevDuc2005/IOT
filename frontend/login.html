@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng nhập — IoT Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div class="auth-shell">
+    <form id="auth-form" class="auth-card">
+      <label id="name-field" style="display: none;">
+        Họ tên
+        <input id="name-input" name="name" maxlength="100" autocomplete="name" />
+      </label>
+
+      <label>
+        <span id="email-label">Tài khoản hoặc email</span>
+        <input id="email-input" name="email" type="text" required autocomplete="username" />
+      </label>
+
+      <label class="password-label">
+        Mật khẩu
+        <span class="password-field">
+          <input
+            id="password-input"
+            name="password"
+            type="password"
+            required
+            minlength="1"
+            maxlength="128"
+            autocomplete="current-password"
+          />
+          <button
+            type="button"
+            id="toggle-password-btn"
+            class="password-eye"
+            aria-label="Hiện mật khẩu"
+            title="Hiện mật khẩu"
+          >
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </button>
+        </span>
+      </label>
+
+      <div id="auth-error" class="form-error" role="alert" style="display: none;"></div>
+
+      <button type="submit" id="submit-btn" class="btn primary">Đăng nhập</button>
+      <small>Mật khẩu tối thiểu 8 ký tự khi tạo tài khoản.</small>
+    </form>
+  </div>
+
+  <script type="module" src="/src/login.js"></script>
+</body>
+</html>
+

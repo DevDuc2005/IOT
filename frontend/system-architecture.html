@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Architecture — Kiến trúc Hệ thống IoT Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      color: #17334b;
+      background: #f4faff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    .arch-header {
+      background: #fff;
+      border-bottom: 1px solid #d8ecf6;
+      padding: 18px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .arch-header h1 {
+      margin: 0;
+      font-size: 18px;
+      color: #15344b;
+    }
+    .arch-header p {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: #637f96;
+    }
+    .arch-links a {
+      text-decoration: none;
+      background: #089fbd;
+      color: #fff;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+    .arch-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 24px 60px;
+      display: grid;
+      gap: 28px;
+    }
+    .arch-card {
+      background: #fff;
+      border: 1px solid #d8ecf6;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(34, 91, 123, 0.04);
+    }
+    .arch-card h2 {
+      margin: 0 0 6px;
+      font-size: 17px;
+      color: #087b9c;
+    }
+    .arch-card p {
+      margin: 0 0 18px;
+      font-size: 13px;
+      color: #53768e;
+    }
+    svg {
+      width: 100%;
+      height: auto;
+      background: #fafdff;
+      border: 1px solid #e2f0f7;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header class="arch-header">
+    <div>
+      <h1>System Architecture — Hệ thống IoT Dashboard Giám sát & Điều khiển (ESP32-C6)</h1>
+      <p>Sinh viên: Ngô Minh Đức (B23DCCN174) • GVHD: Nguyễn Quốc Uy • Học viện Công nghệ Bưu chính Viễn thông</p>
+    </div>
+    <div class="arch-links">
+      <a href="/figma-design.html">Xem Figma Design</a>
+      <a href="/">Về Trang Tổng Quan</a>
+    </div>
+  </header>
+
+  <main class="arch-container">
+    <!-- 1. KIẾN TRÚC TỔNG THỂ 5 THÀNH PHẦN -->
+    <section class="arch-card">
+      <h2>1. Kiến trúc tổng thể hệ thống IoT (End-to-End System Architecture)</h2>
+      <p>Mô hình 5 thành phần kết hợp luồng phần cứng thực (ESP32-C6 + MQTT Broker) và chế độ mô phỏng trực tiếp (DEMO_MODE) trên Backend Node.js.</p>
+      <svg viewBox="0 0 1120 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#089fbd" />
+          </marker>
+        </defs>
+
+        <!-- Frontend -->
+        <rect x="30" y="50" width="220" height="145" rx="14" fill="#edf8fd" stroke="#089fbd" stroke-width="2"/>
+        <text x="140" y="82" text-anchor="middle" font-size="14" font-weight="800" fill="#087b9c">FRONTEND WEB (Port 5173)</text>
+        <text x="140" y="106" text-anchor="middle" font-size="12" fill="#17334b">5 Trang HTML + JS Thuần</text>
+        <text x="140" y="128" text-anchor="middle" font-size="11" fill="#53768e">index.html • sensors.html</text>
+        <text x="140" y="146" text-anchor="middle" font-size="11" fill="#53768e">history.html • profile.html</text>
+        <text x="140" y="164" text-anchor="middle" font-size="11" fill="#53768e">login.html • Biểu đồ SVG</text>
+
+        <!-- Backend -->
+        <rect x="410" y="40" width="300" height="170" rx="14" fill="#ffffff" stroke="#089fbd" stroke-width="2.5"/>
+        <text x="560" y="72" text-anchor="middle" font-size="14" font-weight="800" fill="#087b9c">BACKEND API SERVER (Port 4000)</text>
+        <text x="560" y="96" text-anchor="middle" font-size="12" fill="#17334b">Node.js + Express + Socket.IO + Zod</text>
+        <text x="560" y="120" text-anchor="middle" font-size="11" fill="#53768e">• Xác thực phiên Cookie HttpOnly (scrypt)</text>
+        <text x="560" y="140" text-anchor="middle" font-size="11" fill="#53768e">• REST API (/api/sensors, /api/devices, /api/profile)</text>
+        <text x="560" y="160" text-anchor="middle" font-size="11" fill="#53768e">• Đồng bộ thời gian thực qua WebSocket (Socket.IO)</text>
+        <text x="560" y="180" text-anchor="middle" font-size="11" fill="#53768e">• MQTT Client &amp; Bộ sinh mẫu mô phỏng (DEMO_MODE)</text>
+
+        <!-- Database -->
+        <rect x="850" y="35" width="250" height="180" rx="14" fill="#edf8fd" stroke="#089fbd" stroke-width="2"/>
+        <text x="975" y="65" text-anchor="middle" font-size="14" font-weight="800" fill="#087b9c">DATABASE (SQLite + Prisma)</text>
+        <text x="975" y="88" text-anchor="middle" font-size="12" fill="#17334b">backend/prisma/iot.db (5 bảng chuẩn)</text>
+        <text x="975" y="112" text-anchor="middle" font-size="11" fill="#53768e">• users (Tài khoản &amp; Hồ sơ)</text>
+        <text x="975" y="132" text-anchor="middle" font-size="11" fill="#53768e">• device_list (Bộ ĐK &amp; Thiết bị LED)</text>
+        <text x="975" y="152" text-anchor="middle" font-size="11" fill="#53768e">• sensor_list (Danh mục cảm biến)</text>
+        <text x="975" y="172" text-anchor="middle" font-size="11" fill="#53768e">• data_sensor (Lịch sử đo cảm biến)</text>
+        <text x="975" y="192" text-anchor="middle" font-size="11" fill="#53768e">• action_device (Lịch sử điều khiển)</text>
+
+        <!-- ESP32-C6 -->
+        <rect x="40" y="260" width="260" height="130" rx="14" fill="#fff8e9" stroke="#e5a018" stroke-width="2"/>
+        <text x="170" y="290" text-anchor="middle" font-size="14" font-weight="800" fill="#a76c00">PHẦN CỨNG ESP32-C6</text>
+        <text x="170" y="314" text-anchor="middle" font-size="11" fill="#17334b">• DHT11 (GPIO7): Nhiệt độ &amp; Độ ẩm</text>
+        <text x="170" y="334" text-anchor="middle" font-size="11" fill="#17334b">• LDR LM393 DO (GPIO4): SÁNG / TỐI</text>
+        <text x="170" y="354" text-anchor="middle" font-size="11" fill="#17334b">• 3 Đèn LED: GPIO10, GPIO1, GPIO12</text>
+
+        <!-- MQTT Broker -->
+        <rect x="435" y="260" width="250" height="130" rx="14" fill="#e9faf2" stroke="#169454" stroke-width="2"/>
+        <text x="560" y="290" text-anchor="middle" font-size="14" font-weight="800" fill="#137e50">MQTT BROKER (Mosquitto)</text>
+        <text x="560" y="314" text-anchor="middle" font-size="11" fill="#17334b">• iot/room1/sensors</text>
+        <text x="560" y="334" text-anchor="middle" font-size="11" fill="#17334b">• iot/room1/command</text>
+        <text x="560" y="354" text-anchor="middle" font-size="11" fill="#17334b">• iot/room1/devices/status &amp; history</text>
+
+        <!-- Arrows -->
+        <line x1="250" y1="120" x2="405" y2="120" stroke="#089fbd" stroke-width="2.2" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+        <text x="328" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="#087b9c">HTTP REST + Socket.IO</text>
+
+        <line x1="710" y1="120" x2="855" y2="120" stroke="#089fbd" stroke-width="2.2" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+        <text x="782" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="#087b9c">Prisma ORM</text>
+
+        <line x1="300" y1="325" x2="430" y2="325" stroke="#089fbd" stroke-width="2.2" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+        <text x="365" y="315" text-anchor="middle" font-size="11" font-weight="700" fill="#137e50">Wi-Fi / MQTT</text>
+
+        <line x1="560" y1="255" x2="560" y2="215" stroke="#089fbd" stroke-width="2.2" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+        <text x="625" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="#137e50">Pub / Sub</text>
+      </svg>
+    </section>
+
+    <!-- 2. SƠ ĐỒ ĐẤU NỐI CHÂN GPIO ESP32-C6 -->
+    <section class="arch-card">
+      <h2>2. Sơ đồ kết nối phần cứng ESP32-C6 (Hardware Pinout Diagram)</h2>
+      <p>Ánh xạ chân tín hiệu thực tế giữa vi điều khiển ESP32-C6-DevKit, cảm biến DHT11, cảm biến ánh sáng LDR/LM393 và 3 đèn LED.</p>
+      <svg viewBox="0 0 1120 310" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sensors Left -->
+        <rect x="50" y="40" width="250" height="95" rx="12" fill="#fff1f2" stroke="#f26b6b" stroke-width="2"/>
+        <text x="175" y="68" text-anchor="middle" font-size="13" font-weight="800" fill="#c24450">Cảm biến DHT11</text>
+        <text x="175" y="90" text-anchor="middle" font-size="11" fill="#17334b">VCC (3.3V) • GND • DATA</text>
+        <text x="175" y="110" text-anchor="middle" font-size="11" fill="#637f96">Đo Nhiệt độ (°C) &amp; Độ ẩm (%)</text>
+
+        <rect x="50" y="165" width="250" height="95" rx="12" fill="#fff8e9" stroke="#e5a018" stroke-width="2"/>
+        <text x="175" y="193" text-anchor="middle" font-size="13" font-weight="800" fill="#a76c00">Module Ánh sáng LDR LM393</text>
+        <text x="175" y="215" text-anchor="middle" font-size="11" fill="#17334b">VCC (3.3V) • GND • Ngõ ra số DO</text>
+        <text x="175" y="235" text-anchor="middle" font-size="11" fill="#637f96">DO = 0 (SÁNG) / DO = 1 (TỐI)</text>
+
+        <!-- ESP32 Center -->
+        <rect x="430" y="35" width="260" height="235" rx="16" fill="#17334b" stroke="#089fbd" stroke-width="3"/>
+        <text x="560" y="70" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff">ESP32-C6-WROOM-1</text>
+        <text x="560" y="92" text-anchor="middle" font-size="11" fill="#7dd3fc">RISC-V 160MHz • Wi-Fi 6 • Logic 3.3V</text>
+        <text x="455" y="130" font-size="12" font-weight="700" fill="#fda4af">◀ GPIO7 (DHT_PIN)</text>
+        <text x="455" y="210" font-size="12" font-weight="700" fill="#fde68a">◀ GPIO4 (LIGHT_PIN)</text>
+        <text x="665" y="120" text-anchor="end" font-size="12" font-weight="700" fill="#86efac">GPIO10 (LED1) ▶</text>
+        <text x="665" y="170" text-anchor="end" font-size="12" font-weight="700" fill="#86efac">GPIO1 (LED2) ▶</text>
+        <text x="665" y="220" text-anchor="end" font-size="12" font-weight="700" fill="#86efac">GPIO12 (LED3) ▶</text>
+
+        <!-- LEDs Right -->
+        <rect x="820" y="40" width="250" height="62" rx="10" fill="#e9faf2" stroke="#169454" stroke-width="2"/>
+        <text x="945" y="68" text-anchor="middle" font-size="13" font-weight="800" fill="#137e50">LED 1 + Điện trở 220Ω → GND</text>
+        <text x="945" y="88" text-anchor="middle" font-size="11" fill="#53768e">Chân điều khiển: GPIO10</text>
+
+        <rect x="820" y="124" width="250" height="62" rx="10" fill="#e9faf2" stroke="#169454" stroke-width="2"/>
+        <text x="945" y="152" text-anchor="middle" font-size="13" font-weight="800" fill="#137e50">LED 2 + Điện trở 220Ω → GND</text>
+        <text x="945" y="172" text-anchor="middle" font-size="11" fill="#53768e">Chân điều khiển: GPIO1</text>
+
+        <rect x="820" y="208" width="250" height="62" rx="10" fill="#e9faf2" stroke="#169454" stroke-width="2"/>
+        <text x="945" y="236" text-anchor="middle" font-size="13" font-weight="800" fill="#137e50">LED 3 + Điện trở 220Ω → GND</text>
+        <text x="945" y="256" text-anchor="middle" font-size="11" fill="#53768e">Chân điều khiển: GPIO12</text>
+
+        <!-- Lines -->
+        <line x1="300" y1="90" x2="430" y2="125" stroke="#f26b6b" stroke-width="2.2"/>
+        <line x1="300" y1="210" x2="430" y2="205" stroke="#e5a018" stroke-width="2.2"/>
+        <line x1="690" y1="115" x2="820" y2="70" stroke="#169454" stroke-width="2.2"/>
+        <line x1="690" y1="165" x2="820" y2="155" stroke="#169454" stroke-width="2.2"/>
+        <line x1="690" y1="215" x2="820" y2="238" stroke="#169454" stroke-width="2.2"/>
+      </svg>
+    </section>
+
+    <!-- 3. LƯỢC ĐỒ CƠ SỞ DỮ LIỆU -->
+    <section class="arch-card">
+      <h2>3. Thiết kế Cơ sở dữ liệu Chuẩn hóa 5 Bảng (Database Schema &amp; ERD)</h2>
+      <p>Cấu trúc 5 bảng chuẩn hóa theo quan hệ thực thể (ERD) trong cơ sở dữ liệu SQLite (<code style="font-family:Consolas,monospace;background:#f1f5f9;padding:1px 4px;border-radius:4px;">iot.db</code>) kết nối qua Prisma ORM.</p>
+      
+      <!-- Hàng 1: users, device_list, sensor_list -->
+      <svg viewBox="0 0 1120 310" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 20px;">
+        <!-- users -->
+        <rect x="20" y="15" width="340" height="280" rx="12" fill="#ffffff" stroke="#089fbd" stroke-width="2"/>
+        <rect x="20" y="15" width="340" height="40" rx="12" fill="#089fbd"/>
+        <text x="190" y="41" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Bảng 1: users (Tài khoản &amp; Phân quyền)</text>
+        <text x="40" y="80" font-size="12" fill="#17334b">🔑 id: INT (PK, autoincrement)</text>
+        <text x="40" y="103" font-size="12" fill="#17334b">• name: VARCHAR(100)</text>
+        <text x="40" y="126" font-size="12" fill="#17334b">• email: VARCHAR(150) (UNIQUE)</text>
+        <text x="40" y="149" font-size="12" fill="#17334b">• password_hash: VARCHAR(255) (scrypt)</text>
+        <text x="40" y="172" font-size="12" fill="#17334b">• phone: VARCHAR(20)</text>
+        <text x="40" y="195" font-size="12" fill="#17334b">• github, figma, System Architecture: VARCHAR(500)</text>
+        <text x="40" y="218" font-size="12" fill="#17334b">• role: ENUM('ADMIN', 'USER')</text>
+        <text x="40" y="241" font-size="12" fill="#17334b">⏱ created_at, updated_at: DATETIME</text>
+        <text x="40" y="270" font-size="11" fill="#087b9c" font-weight="700">➜ Quan hệ: 1 users — N action_device</text>
+
+        <!-- device_list -->
+        <rect x="390" y="15" width="340" height="280" rx="12" fill="#ffffff" stroke="#089fbd" stroke-width="2"/>
+        <rect x="390" y="15" width="340" height="40" rx="12" fill="#089fbd"/>
+        <text x="560" y="41" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Bảng 2: device_list (Bộ ĐK &amp; Thiết bị LED)</text>
+        <text x="410" y="80" font-size="12" fill="#17334b">🔑 id: INT (PK, autoincrement)</text>
+        <text x="410" y="103" font-size="12" fill="#17334b">• name: VARCHAR(100) ('ESP32-C6', 'LED 1..3')</text>
+        <text x="410" y="126" font-size="12" fill="#17334b">• type: ENUM('CONTROLLER', 'LED')</text>
+        <text x="410" y="149" font-size="12" fill="#17334b">🔗 parent_id: INT (FK ➜ device_list.id, Nullable)</text>
+        <text x="410" y="172" font-size="12" fill="#17334b">• gpio_pin: TINYINT (10, 1, 12)</text>
+        <text x="410" y="195" font-size="12" fill="#17334b">• room: VARCHAR(100) ('room1')</text>
+        <text x="410" y="218" font-size="12" fill="#17334b">• status: ENUM('ON', 'OFF') • is_online: TINYINT</text>
+        <text x="410" y="241" font-size="12" fill="#17334b">⏱ created_at, updated_at: DATETIME</text>
+        <text x="410" y="270" font-size="11" fill="#087b9c" font-weight="700">➜ Quan hệ: 1 Controller — N LED / N Cảm biến</text>
+
+        <!-- sensor_list -->
+        <rect x="760" y="15" width="340" height="280" rx="12" fill="#ffffff" stroke="#089fbd" stroke-width="2"/>
+        <rect x="760" y="15" width="340" height="40" rx="12" fill="#089fbd"/>
+        <text x="930" y="41" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Bảng 3: sensor_list (Danh mục Cảm biến)</text>
+        <text x="780" y="80" font-size="12" fill="#17334b">🔑 id: INT (PK, autoincrement)</text>
+        <text x="780" y="103" font-size="12" fill="#17334b">🔗 controller_id: INT (FK ➜ device_list.id)</text>
+        <text x="780" y="126" font-size="12" fill="#17334b">• name: VARCHAR(100) (DHT11, LDR LM393)</text>
+        <text x="780" y="149" font-size="12" fill="#17334b">• type: ENUM('temperature', 'humidity', 'light')</text>
+        <text x="780" y="172" font-size="12" fill="#17334b">• unit: VARCHAR(20) ('°C', '%', 'LIGHT/DARK')</text>
+        <text x="780" y="195" font-size="12" fill="#17334b">• gpio_pin: TINYINT (7 cho DHT11, 4 cho LDR)</text>
+        <text x="780" y="225" font-size="12" fill="#17334b">⏱ created_at: DATETIME</text>
+        <text x="780" y="270" font-size="11" fill="#087b9c" font-weight="700">➜ Quan hệ: 1 sensor_list — N data_sensor</text>
+      </svg>
+
+      <!-- Hàng 2: data_sensor, action_device -->
+      <svg viewBox="0 0 1120 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- data_sensor -->
+        <rect x="20" y="10" width="480" height="250" rx="12" fill="#ffffff" stroke="#089fbd" stroke-width="2"/>
+        <rect x="20" y="10" width="480" height="40" rx="12" fill="#089fbd"/>
+        <text x="260" y="36" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Bảng 4: data_sensor (Dữ liệu Lịch sử Cảm biến)</text>
+        <text x="45" y="78" font-size="12" fill="#17334b">🔑 id: BIGINT (PK, autoincrement)</text>
+        <text x="45" y="105" font-size="12" fill="#17334b">🔗 sensor_id: INT (FK ➜ sensor_list.id)</text>
+        <text x="45" y="132" font-size="12" fill="#17334b">• value: DECIMAL(10,2) (Nhiệt độ, Độ ẩm, Mức sáng)</text>
+        <text x="45" y="160" font-size="12" fill="#17334b">⏱ recorded_at: DATETIME (@index hỗ trợ tìm kiếm theo giây UTC+7)</text>
+        <text x="45" y="200" font-size="12" fill="#087b9c" font-weight="700">Mục đích: Lưu trữ liên tục toàn bộ chuỗi số liệu cảm biến thu thập từ ESP32-C6.</text>
+        <text x="45" y="225" font-size="11" fill="#53768e">Hỗ trợ tra cứu phân trang và vẽ đồ thị thời gian thực theo từng chỉ số đo.</text>
+
+        <!-- action_device -->
+        <rect x="540" y="10" width="560" height="250" rx="12" fill="#ffffff" stroke="#089fbd" stroke-width="2"/>
+        <rect x="540" y="10" width="560" height="40" rx="12" fill="#089fbd"/>
+        <text x="820" y="36" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Bảng 5: action_device (Lịch sử Điều khiển Thiết bị)</text>
+        <text x="565" y="75" font-size="12" fill="#17334b">🔑 id: BIGINT (PK) • request_id, group_request_id: VARCHAR(36)</text>
+        <text x="565" y="100" font-size="12" fill="#17334b">🔗 user_id: INT (FK ➜ users.id) • 🔗 device_id: INT (FK ➜ device_list.id)</text>
+        <text x="565" y="125" font-size="12" fill="#17334b">• action: ENUM('ON', 'OFF') (Lệnh Bật / Tắt)</text>
+        <text x="565" y="150" font-size="12" fill="#17334b">• status: ENUM('LOADING', 'ON', 'OFF', 'TIMEOUT', 'ERROR')</text>
+        <text x="565" y="175" font-size="12" fill="#17334b">• error_message: VARCHAR(500) (Thông tin lỗi khi timeout hoặc mất MQTT)</text>
+        <text x="565" y="200" font-size="12" fill="#17334b">⏱ created_at, finished_at: DATETIME (Thời gian gửi lệnh và hoàn tất)</text>
+        <text x="565" y="232" font-size="11" fill="#087b9c" font-weight="700">Chu trình: Khởi tạo LOADING (xoay 3s) ➜ ESP32 phản hồi ➜ ON / OFF / TIMEOUT / ERROR</text>
+      </svg>
+    </section>
+  </main>
+</body>
+</html>
+

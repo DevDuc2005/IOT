@@ -1,0 +1,623 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8" />
+<title>CHƯƠNG IV: TRIỂN KHAI PHẦN MỀM VÀ THIẾT KẾ API - Ngô Minh Đức B23DCCN174</title>
+<!--[if gte mso 9]>
+<xml>
+  <w:WordDocument>
+    <w:View>Print</w:View>
+    <w:Zoom>100</w:Zoom>
+    <w:DoNotOptimizeForBrowser/>
+  </w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  @page Section1 {
+    size: 21cm 29.7cm;
+    margin: 2.5cm 2.0cm 2.5cm 3.0cm;
+    mso-header-margin: 36.0pt;
+    mso-footer-margin: 36.0pt;
+    mso-paper-source: 0;
+  }
+  div.Section1 { page: Section1; }
+  body {
+    font-family: "Times New Roman", serif;
+    font-size: 13pt;
+    color: #0f172a;
+    line-height: 1.45;
+  }
+  h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #0f172a;
+    margin-top: 20pt;
+    margin-bottom: 8pt;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #0369a1;
+    margin-top: 16pt;
+    margin-bottom: 6pt;
+  }
+  h3 {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #0f172a;
+    margin-top: 12pt;
+    margin-bottom: 4pt;
+  }
+  p {
+    margin-top: 0pt;
+    margin-bottom: 6pt;
+    text-align: justify;
+    line-height: 1.45;
+  }
+  ul, ol {
+    margin-top: 2pt;
+    margin-bottom: 6pt;
+    padding-left: 20pt;
+  }
+  li {
+    margin-bottom: 3pt;
+    line-height: 1.4;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 8pt;
+    margin-bottom: 12pt;
+    font-size: 11.5pt;
+  }
+  th {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    font-weight: bold;
+    border: 1pt solid #94a3b8;
+    padding: 6pt 8pt;
+    text-align: left;
+  }
+  td {
+    border: 1pt solid #cbd5e1;
+    padding: 5pt 8pt;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+  pre, code {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 10.5pt;
+  }
+  pre {
+    background-color: #f1f5f9;
+    border: 1pt solid #cbd5e1;
+    padding: 8pt 10pt;
+    margin-top: 4pt;
+    margin-bottom: 8pt;
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.3;
+  }
+  .box-info {
+    border: 1.5pt solid #0284c7;
+    background-color: #f0f9ff;
+    padding: 12pt 16pt;
+    margin-bottom: 16pt;
+    border-radius: 4pt;
+  }
+  .table-title {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 12pt;
+    margin-top: 8pt;
+    margin-bottom: 4pt;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="Section1">
+
+  <!-- KHUNG THÔNG TIN ĐỀ TÀI -->
+  <div class="box-info">
+    <p style="text-align:center;font-weight:bold;font-size:14pt;margin-bottom:4pt;color:#0369a1;">HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG</p>
+    <p style="text-align:center;font-weight:bold;font-size:12.5pt;margin-bottom:12pt;">KHOA CÔNG NGHỆ THÔNG TIN 1</p>
+    <p style="text-align:center;font-weight:bold;font-size:15pt;color:#0f172a;margin-bottom:8pt;">BÁO CÁO HỌC PHẦN: IoT VÀ ỨNG DỤNG</p>
+    <p style="text-align:center;font-weight:bold;font-size:13.5pt;color:#0284c7;margin-bottom:12pt;">ĐỀ TÀI: XÂY DỰNG HỆ THỐNG IoT DASHBOARD GIÁM SÁT MÔI TRƯỜNG VÀ ĐIỀU KHIỂN THIẾT BỊ</p>
+    <table style="width:100%;border:none;margin:0;">
+      <tr style="background:none;"><td style="border:none;padding:2pt 0;"><b>Giảng viên hướng dẫn:</b></td><td style="border:none;padding:2pt 0;">Nguyễn Quốc Uy</td></tr>
+      <tr style="background:none;"><td style="border:none;padding:2pt 0;"><b>Sinh viên thực hiện:</b></td><td style="border:none;padding:2pt 0;">Ngô Minh Đức</td></tr>
+      <tr style="background:none;"><td style="border:none;padding:2pt 0;"><b>Mã sinh viên:</b></td><td style="border:none;padding:2pt 0;">B23DCCN174</td></tr>
+      <tr style="background:none;"><td style="border:none;padding:2pt 0;"><b>Email tài khoản:</b></td><td style="border:none;padding:2pt 0;">swallownest59@gmail.com</td></tr>
+      <tr style="background:none;"><td style="border:none;padding:2pt 0;"><b>Hệ thống đang chạy:</b></td><td style="border:none;padding:2pt 0;">Frontend (http://localhost:5173/) — Backend (http://localhost:4000/)</td></tr>
+    </table>
+  </div>
+
+  <hr style="border:0;border-top:1.5pt solid #0369a1;margin:16pt 0;" />
+
+  <h1>CHƯƠNG IV: TRIỂN KHAI PHẦN MỀM VÀ THIẾT KẾ API</h1>
+
+  <h2>4.1. Tổ chức mã nguồn hệ thống</h2>
+  <p>Mã nguồn hệ thống được tổ chức theo kiến trúc phân tách rõ ràng giữa giao diện người dùng (Frontend), máy chủ xử lý nghiệp vụ và truyền thông hai chiều (Backend), cơ sở dữ liệu quan hệ (Prisma SQLite) và chương trình vi điều khiển biên (Firmware ESP32-C6). Cấu trúc này tối ưu cho việc đọc hiểu, bảo trì và mở rộng sau này.</p>
+
+  <p class="table-title">Bảng 4.1. Bảng phân công vai trò các tệp và thư mục trong dự án</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:30%;">Tệp / Thư mục</th>
+        <th style="width:20%;">Công nghệ</th>
+        <th style="width:50%;">Chức năng chi tiết trong hệ thống</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>frontend/index.html</b><br/>và <b>src/overview.js</b></td>
+        <td>HTML5, JavaScript (ES6)</td>
+        <td><b>Trang Tổng quan:</b> Hiển thị 3 thẻ thông số môi trường tức thời (Nhiệt độ, Độ ẩm, Ánh sáng), biểu đồ SVG 2 trục tung và cụm công tắc điều khiển 3 đèn LED.</td>
+      </tr>
+      <tr>
+        <td><b>frontend/sensors.html</b><br/>và <b>src/sensors.js</b></td>
+        <td>HTML5, JavaScript (ES6)</td>
+        <td><b>Trang Giám sát cảm biến:</b> Tra cứu lịch sử đo đạc, bộ lọc đa tiêu chí (loại cảm biến, giá trị, mốc thời gian), bảng dữ liệu phân trang và nút sao chép thời gian.</td>
+      </tr>
+      <tr>
+        <td><b>frontend/history.html</b><br/>và <b>src/history.js</b></td>
+        <td>HTML5, JavaScript (ES6)</td>
+        <td><b>Trang Lịch sử hoạt động:</b> Tra cứu lịch sử bật/tắt thiết bị, lọc theo LED, hành động (Bật/Tắt), trạng thái (LOADING, ON, OFF, TIMEOUT), nút sao chép thời gian.</td>
+      </tr>
+      <tr>
+        <td><b>frontend/profile.html</b><br/>và <b>src/profile.js</b></td>
+        <td>HTML5, JavaScript (ES6)</td>
+        <td><b>Trang Hồ sơ cá nhân:</b> Xem/cập nhật thông tin sinh viên, ảnh đại diện vuông 256×256, 3 liên kết đồ án (GitHub, Figma, System Architecture) và đổi mật khẩu.</td>
+      </tr>
+      <tr>
+        <td><b>frontend/login.html</b><br/>và <b>src/login.js</b></td>
+        <td>HTML5, JavaScript (ES6)</td>
+        <td><b>Trang Đăng nhập:</b> Giao diện xác thực bảo mật và hỗ trợ thiết lập tài khoản quản trị đầu tiên khi hệ thống mới cài đặt (setupRequired).</td>
+      </tr>
+      <tr>
+        <td><b>frontend/figma-design.html</b></td>
+        <td>HTML5, CSS3</td>
+        <td>Trình diễn bộ thiết kế giao diện UI Kit, bảng màu Cyan/Blue, typography và 5 Artboard chuẩn thiết kế Figma.</td>
+      </tr>
+      <tr>
+        <td><b>frontend/system-architecture.html</b></td>
+        <td>HTML5, SVG</td>
+        <td>Trình diễn tài liệu kiến trúc: sơ đồ khối hệ thống, sơ đồ chân GPIO ESP32-C6 và sơ đồ quan hệ thực thể (ERD 5 bảng).</td>
+      </tr>
+      <tr>
+        <td><b>frontend/src/common.js</b></td>
+        <td>JavaScript (ES6)</td>
+        <td>Thư viện dùng chung: gọi API (api), định dạng thời gian Việt Nam dd/mm/yyyy hh:mm:ss (formatTime), kiểm tra đăng nhập & menu mobile (initDashboardLayout), thông báo Toast (showToast), sao chép thời gian (bindCopyTimeButtons).</td>
+      </tr>
+      <tr>
+        <td><b>frontend/src/style.css</b></td>
+        <td>CSS3 (Flexbox/Grid)</td>
+        <td>Hệ thống giao diện Light-Blue/Cyan, thiết kế đáp ứng (Responsive) đa màn hình từ máy tính để bàn đến máy tính bảng và điện thoại di động.</td>
+      </tr>
+      <tr>
+        <td><b>frontend/vite.config.ts</b></td>
+        <td>Vite Bundler</td>
+        <td>Công cụ đóng gói và phục vụ mã nguồn hiện đại, hỗ trợ Hot Module Replacement (HMR) và tối ưu hóa đóng gói production ra thư mục dist/.</td>
+      </tr>
+      <tr>
+        <td><b>backend/src/index.js</b></td>
+        <td>Node.js, Express, Socket.IO</td>
+        <td>Máy chủ Express cổng 4000: quản lý kết nối MQTT Client, Socket.IO, các REST API cảm biến/thiết bị, cơ chế khóa điều khiển và bộ sinh mẫu mô phỏng.</td>
+      </tr>
+      <tr>
+        <td><b>backend/src/accounts.js</b></td>
+        <td>Node.js, Crypto</td>
+        <td>Xử lý xác thực người dùng bằng Cookie HttpOnly (iot_session), rate limiting chống brute-force theo IP, quản lý hồ sơ và đổi mật khẩu.</td>
+      </tr>
+      <tr>
+        <td><b>backend/src/profile-security.js</b></td>
+        <td>Node.js Crypto (scrypt)</td>
+        <td>Băm và xác minh mật khẩu bằng thuật toán scrypt có salt ngẫu nhiên; kiểm tra định dạng chữ ký nhị phân thực (Magic Bytes) của ảnh đại diện.</td>
+      </tr>
+      <tr>
+        <td><b>backend/src/time.js</b></td>
+        <td>JavaScript</td>
+        <td>Phân tích chuỗi thời gian người dùng nhập theo giờ Việt Nam (UTC+7) sang khoảng nửa đóng nửa mở [gte, lt) theo giờ UTC; kiểm tra phân trang an toàn.</td>
+      </tr>
+      <tr>
+        <td><b>backend/src/backup-db.js</b></td>
+        <td>Node.js File System</td>
+        <td>Tự động sao lưu cơ sở dữ liệu iot.db sang thư mục backend/prisma/backups/ kèm nhãn thời gian ISO trước mỗi lần chạy server.</td>
+      </tr>
+      <tr>
+        <td><b>backend/prisma/schema.prisma</b></td>
+        <td>Prisma ORM (SQLite)</td>
+        <td>Định nghĩa lược đồ cơ sở dữ liệu SQLite gồm 5 bảng chuẩn hóa (users, device_list, sensor_list, data_sensor, action_device) và 3 model ánh xạ thời gian thực.</td>
+      </tr>
+      <tr>
+        <td><b>firmware/esp32_c6_iot.ino</b></td>
+        <td>C/C++ (Arduino IDE)</td>
+        <td>Chương trình nhúng trên ESP32-C6: đọc dữ liệu DHT11 (GPIO7), cảm biến ánh sáng (GPIO4), publish gói JSON lên MQTT và đóng ngắt 3 đèn LED (GPIO10, GPIO1, GPIO12).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4.2. Luồng thu thập, xử lý và đồng bộ dữ liệu cảm biến</h2>
+  <p>Hệ thống hỗ trợ linh hoạt cả hai chế độ: <b>chế độ phần cứng thực (REAL)</b> kết nối qua giao thức MQTT và <b>chế độ mô phỏng (DEMO)</b> phục vụ việc kiểm thử độc lập phần mềm:</p>
+
+  <h3>4.2.1. Thu thập dữ liệu từ phần cứng thực qua MQTT</h3>
+  <p>Vi điều khiển ESP32-C6 thực hiện đọc chu kỳ cảm biến DHT11 và cảm biến ánh sáng định kỳ 3 giây một lần. Bản tin JSON được đóng gói và publish lên topic <code>iot/room1/sensors</code>:</p>
+  <pre>{ "temperature": 28.2, "humidity": 68.4, "light": "DARK", "lightRaw": 1 }</pre>
+  <p>Backend duy trì một kết nối MQTT client thường trực (thư viện <code>mqtt.js</code>) để lắng nghe topic này. Khi nhận được bản tin, backend thực hiện:</p>
+  <ol>
+    <li>Kiểm tra cấu trúc và tính hợp lệ của dữ liệu bằng thư viện <b>Zod</b>.</li>
+    <li>Ghi dữ liệu bền vững vào cơ sở dữ liệu SQLite thông qua Prisma ORM (lưu đồng thời vào bảng <code>SensorReading</code> và bảng quan hệ <code>data_sensor</code>).</li>
+    <li>Cập nhật biến trạng thái bộ nhớ đệm <code>latestSensor</code> và ghi nhận mốc thời gian <code>lastSensorAt</code>.</li>
+    <li>Phát sự kiện WebSocket tới toàn bộ các trình duyệt đang mở: <code>io.emit('sensor', latestSensor)</code>.</li>
+  </ol>
+
+  <h3>4.2.2. Cơ chế sinh dữ liệu ở chế độ mô phỏng (DEMO)</h3>
+  <p>Khi chưa kết nối mạch phần cứng thực tế (biến môi trường <code>DEMO_MODE=true</code>), backend kích hoạt bộ sinh mẫu toán học nội tại. Thuật toán sử dụng hàm điều hòa lượng giác để mô phỏng biến thiên tự nhiên của môi trường phòng:</p>
+  <pre>const n = time / 10000;
+const light = Math.sin(n / 2) > 0 ? "LIGHT" : "DARK";
+const temperature = Math.round((28.5 + 2.5 * Math.sin(n)) * 10) / 10;
+const humidity = Math.round((65.0 + 9.0 * Math.cos(n / 1.7)) * 10) / 10;</pre>
+  <p>Nhiệt độ dao động ổn định trong khoảng 26.0°C – 31.0°C, độ ẩm dao động trong khoảng 56.0% – 74.0%. Vòng lặp sinh mẫu được điều khiển bằng hàm <code>setTimeout(tick, 2000)</code> sau khi thao tác ghi CSDL hoàn tất, đảm bảo không bao giờ xảy ra tình trạng chồng chéo tác vụ khi máy chủ bận.</p>
+
+  <h2>4.3. Xử lý trực quan hóa biểu đồ SVG và trạng thái Icon</h2>
+
+  <h3>4.3.1. Thuật toán vẽ biểu đồ đa trục trên SVG vector thuần</h3>
+  <p>Thay vì sử dụng các thư viện ngoài cồng kềnh, hệ thống sử dụng module dựng SVG vector thuần tối ưu:</p>
+  <ul>
+    <li><b>Biểu đồ kết hợp (combined):</b> Hiển thị song song hai đường Nhiệt độ và Độ ẩm trên cùng một khung hình nhưng với <b>hai thang đo độc lập</b>:
+      <ul>
+        <li>Trục tung bên trái dành cho Nhiệt độ (°C) với bước chia 8°C (giá trị đỉnh tối thiểu 32°C).</li>
+        <li>Trục tung bên phải dành cho Độ ẩm (%) với thang đo cố định 0% – 100%.</li>
+      </ul>
+    </li>
+    <li><b>Công thức ánh xạ tọa độ màn hình:</b>
+      <pre>x(i) = left + (right - left) * i / max(1, N - 1)
+y(value) = bottom - (value / maximum) * (bottom - top)</pre>
+    </li>
+    <li>Khi người dùng bấm chọn các tab chức năng (<i>Nhiệt độ + Độ ẩm</i>, <i>Nhiệt độ</i>, <i>Độ ẩm</i>, <i>Ánh sáng</i>), JavaScript đọc thuộc tính <code>data-chart</code>, gán <code>aria-pressed="true"</code> cho tab được chọn và gọi hàm <code>renderChart()</code> vẽ lại các đường thẻ <code>&lt;polyline&gt;</code> cùng các điểm đo tròn <code>&lt;circle&gt;</code>.</li>
+    <li>Tích hợp <code>ResizeObserver</code> trên phần tử cha để tự động tính toán lại tỷ lệ và vẽ lại biểu đồ khi người dùng thay đổi kích thước cửa sổ trình duyệt.</li>
+  </ul>
+
+  <h3>4.3.2. Hiển thị trạng thái Icon và Đèn LED</h3>
+  <ul>
+    <li><b>3 Đèn LED:</b> Mỗi đèn tương ứng với một thẻ icon bóng đèn SVG (<code>#lamp-1</code>, <code>#lamp-2</code>, <code>#lamp-3</code>). Khi đèn ở trạng thái <code>ON</code>, mã JavaScript tự động gán class <code>.on</code>, kích hoạt màu vàng nổi bật trong CSS (mã màu <code>#f59e0b</code>), đồng thời gạt công tắc sang phải và hiển thị nhãn chữ <code>ON</code>. Khi đèn tắt, class <code>.on</code> được gỡ bỏ, icon trở về màu xám bạc trung tính.</li>
+    <li><b>Icon Ánh sáng:</b> Căn cứ vào trạng thái chuỗi <code>LIGHT</code> hay <code>DARK</code>, hệ thống hiển thị biểu tượng <b>Mặt trời</b> (kèm thẻ nền vàng nhạt) hoặc biểu tượng <b>Mặt trăng</b> (kèm thẻ nền tím sẫm dịu mắt). Giá trị này phản ánh trực tiếp điều kiện môi trường tự nhiên, hoàn toàn độc lập với trạng thái bật/tắt của 3 đèn LED.</li>
+  </ul>
+
+  <h2>4.4. Cơ chế điều khiển thiết bị, vòng đời lệnh và lưu trữ lịch sử</h2>
+
+  <h3>4.4.1. Vòng đời xử lý lệnh 4 giai đoạn</h3>
+  <p>Một thao tác điều khiển thiết bị của người dùng tuân theo vòng đời chặt chẽ, tách bạch rõ ràng giữa <b>Yêu cầu thao tác (action)</b> và <b>Kết quả xác nhận thực thi (status/result)</b>:</p>
+  <ol>
+    <li><b>Giai đoạn Khởi tạo (LOADING):</b>
+      <p>Khi người dùng nhấn công tắc hoặc nút <i>Bật tất cả</i> / <i>Tắt tất cả</i>, hàm <code>sendCommand()</code> khóa tạm thời công tắc để chống gửi lặp. Backend kiểm tra biến cờ <code>commandBusy</code>. Nếu hệ thống đang rảnh, backend thực thi giao dịch Prisma tạo ngay bản ghi lịch sử với <code>status = 'LOADING'</code>. Trên giao diện, công tắc hiển thị vòng xoay chờ và bảng lịch sử hoạt động xuất hiện huy hiệu LOADING.</p>
+    </li>
+    <li><b>Giai đoạn Truyền lệnh (COMMAND):</b>
+      <p>Ở chế độ REAL, backend phát thông điệp điều khiển lên MQTT Topic <code>iot/room1/command</code> với payload chuỗi chuẩn (ví dụ: <code>led 1 on</code> hoặc <code>all on</code>). ESP32-C6 tiếp nhận và xuất mức điện áp ra các chân GPIO tương ứng.</p>
+    </li>
+    <li><b>Giai đoạn Phản hồi và Xác nhận (CONFIRMATION):</b>
+      <p>ESP32-C6 sau khi tác động chân GPIO thành công sẽ publish bản tin xác nhận lên topic <code>iot/room1/devices/status</code>. Backend nhận bản tin, đối chiếu với lệnh đang chờ và thực hiện cập nhật CSDL.</p>
+    </li>
+    <li><b>Giai đoạn Hoàn tất (FINISH / TIMEOUT):</b>
+      <p>Backend cập nhật chính bản ghi có <code>id</code> vừa tạo từ <code>LOADING</code> sang kết quả <code>ON</code> hoặc <code>OFF</code> (kèm thời điểm hoàn tất <code>finished_at</code>). Nếu quá thời gian chờ (8 giây) mà ESP32 không phản hồi, backend cập nhật trạng thái lỗi <code>TIMEOUT</code>. Sau đó giải phóng khóa <code>commandBusy</code> và phát sự kiện đồng bộ toàn bộ giao diện qua Socket.IO.</p>
+    </li>
+  </ol>
+
+  <h2>4.5. Thuật toán tìm kiếm thời gian và phân trang dữ liệu</h2>
+
+  <h3>4.5.1. Định dạng hiển thị giờ Việt Nam chuẩn hóa</h3>
+  <p>Hàm <code>formatTime</code> trong <code>frontend/src/common.js</code> sử dụng API chuẩn <code>Intl.DateTimeFormat</code> với múi giờ <code>Asia/Ho_Chi_Minh</code> để định dạng tất cả các mốc thời gian hiển thị ra bảng theo quy chuẩn:</p>
+  <p style="text-align:center;font-weight:bold;font-size:13.5pt;color:#0369a1;">dd/mm/yyyy hh:mm:ss</p>
+  <p style="text-align:center;font-style:italic;">(Ví dụ: 10/11/2026 09:37:39)</p>
+
+  <h3>4.5.2. Thuật toán phân tích cửa sổ thời gian (timeWindow)</h3>
+  <p>Hàm <code>timeWindow(value)</code> trong <code>backend/src/time.js</code> chuyển đổi chuỗi tìm kiếm linh hoạt của người dùng thành một nửa khoảng đóng-mở <code>[gte, lt)</code> theo chuẩn thời gian quốc tế UTC:</p>
+
+  <p class="table-title">Bảng 4.2. Bảng quy đổi cú pháp tìm kiếm thời gian sang cửa sổ truy vấn CSDL</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:25%;">Cú pháp nhập</th>
+        <th style="width:35%;">Ngữ nghĩa (Giờ VN - UTC+7)</th>
+        <th style="width:40%;">Khoảng truy vấn CSDL (UTC)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>10/11/2026</b></td>
+        <td>Toàn bộ ngày 10 tháng 11 năm 2026</td>
+        <td>gte: 2026-11-09T17:00:00.000Z<br/>lt: 2026-11-10T17:00:00.000Z</td>
+      </tr>
+      <tr>
+        <td><b>11/2026</b></td>
+        <td>Toàn bộ tháng 11 năm 2026</td>
+        <td>gte: 2026-10-31T17:00:00.000Z<br/>lt: 2026-11-30T17:00:00.000Z</td>
+      </tr>
+      <tr>
+        <td><b>2026</b></td>
+        <td>Toàn bộ năm 2026</td>
+        <td>gte: 2025-12-31T17:00:00.000Z<br/>lt: 2026-12-31T17:00:00.000Z</td>
+      </tr>
+      <tr>
+        <td><b>10/11/2026 09</b></td>
+        <td>Khung 1 giờ: từ 09:00:00 đến 09:59:59</td>
+        <td>gte: 2026-11-10T02:00:00.000Z<br/>lt: 2026-11-10T03:00:00.000Z</td>
+      </tr>
+      <tr>
+        <td><b>10/11/2026 09:37</b></td>
+        <td>Khung 1 phút: từ 09:37:00 đến 09:37:59</td>
+        <td>gte: 2026-11-10T02:37:00.000Z<br/>lt: 2026-11-10T02:38:00.000Z</td>
+      </tr>
+      <tr>
+        <td><b>10/11/2026 09:37:39</b></td>
+        <td>Đúng 1 giây chính xác</td>
+        <td>gte: 2026-11-10T02:37:39.000Z<br/>lt: 2026-11-10T02:37:40.000Z</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Hàm chủ động kiểm tra tính hợp lệ của lịch thiên văn, kiên quyết từ chối các ngày không tồn tại (như ngày 31/04 hoặc 29/02 năm không nhuận) với mã lỗi <code>400 Bad Request</code>.</p>
+
+  <h3>4.5.3. Phân trang dữ liệu và sao chép nhanh</h3>
+  <ul>
+    <li>Hàm <code>pagination(query)</code> chuẩn hóa <code>page &gt;= 1</code> và giới hạn kích thước trang an toàn <code>1 &lt;= limit &lt;= 100</code> (mặc định 5 bản ghi/trang).</li>
+    <li>Tại mỗi dòng của bảng dữ liệu, nút bấm sao chép (copy button) cho phép người dùng click để copy chuỗi thời gian chính xác vào bộ nhớ đệm (Clipboard) và chuyển icon sang dấu tích xanh <code>✓</code> trong 1.5 giây để phản hồi người dùng.</li>
+  </ul>
+
+  <h2>4.6. Danh mục thiết kế RESTful API chi tiết</h2>
+
+  <p class="table-title">Bảng 4.3. Bảng tổng hợp các REST API trong hệ thống IoT Dashboard</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:10%;">Method</th>
+        <th style="width:30%;">Endpoint</th>
+        <th style="width:45%;">Mô tả nghiệp vụ</th>
+        <th style="width:15%;">Yêu cầu phiên</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>GET</b></td>
+        <td>/api/auth/status</td>
+        <td>Kiểm tra hệ thống đã có tài khoản quản trị hay chưa (setupRequired).</td>
+        <td>Không</td>
+      </tr>
+      <tr>
+        <td><b>POST</b></td>
+        <td>/api/auth/setup</td>
+        <td>Khởi tạo tài khoản quản trị ban đầu khi cơ sở dữ liệu còn trống.</td>
+        <td>Không</td>
+      </tr>
+      <tr>
+        <td><b>POST</b></td>
+        <td>/api/auth/login</td>
+        <td>Xác thực đăng nhập bằng email hoặc username và mật khẩu; cấp cookie phiên.</td>
+        <td>Không</td>
+      </tr>
+      <tr>
+        <td><b>POST</b></td>
+        <td>/api/auth/logout</td>
+        <td>Đăng xuất, xóa phiên trong bộ nhớ và xóa cookie iot_session.</td>
+        <td>Không</td>
+      </tr>
+      <tr>
+        <td><b>GET</b></td>
+        <td>/api/profile</td>
+        <td>Lấy thông tin hồ sơ của người dùng đang đăng nhập.</td>
+        <td>Có</td>
+      </tr>
+      <tr>
+        <td><b>PUT</b></td>
+        <td>/api/profile</td>
+        <td>Cập nhật thông tin cá nhân, ảnh đại diện và 3 liên kết đồ án.</td>
+        <td>Có</td>
+      </tr>
+      <tr>
+        <td><b>PUT</b></td>
+        <td>/api/profile/password</td>
+        <td>Đổi mật khẩu người dùng và thu hồi toàn bộ các phiên đăng nhập cũ.</td>
+        <td>Có</td>
+      </tr>
+      <tr>
+        <td><b>GET</b></td>
+        <td>/api/system/status</td>
+        <td>Lấy trạng thái kết nối MQTT, ESP32 online và chế độ hoạt động (REAL/DEMO).</td>
+        <td>Có</td>
+      </tr>
+      <tr>
+        <td><b>GET</b></td>
+        <td>/api/devices/status</td>
+        <td>Lấy trạng thái tức thời của 3 đèn LED và lệnh đang chờ xử lý.</td>
+        <td>Có</td>
+      </tr>
+      <tr>
+        <td><b>GET</b></td>
+        <td>/api/sensors/latest</td>
+        <td>Lấy mẫu đo cảm biến mới nhất đang lưu trữ tại máy chủ.</td>
+        <td>Có</td>
+      </tr>
+      <tr>
+        <td><b>GET</b></td>
+        <td>/api/sensors/history</td>
+        <td>Lấy danh sách các mẫu đo gần nhất phục vụ vẽ biểu đồ đường môi trường.</td>
+        <td>Có</td>
+      </tr>
+      <tr>
+        <td><b>GET</b></td>
+        <td>/api/sensors/records</td>
+        <td>Tìm kiếm, lọc và phân trang lịch sử dữ liệu cảm biến đa tiêu chí.</td>
+        <td>Có</td>
+      </tr>
+      <tr>
+        <td><b>GET</b></td>
+        <td>/api/devices/history</td>
+        <td>Tìm kiếm, lọc và phân trang lịch sử thao tác điều khiển đèn LED.</td>
+        <td>Có</td>
+      </tr>
+      <tr>
+        <td><b>POST</b></td>
+        <td>/api/devices/command</td>
+        <td>Gửi lệnh điều khiển bật/tắt riêng từng LED hoặc tất cả LED.</td>
+        <td>Có</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4.7. Đặc tả chi tiết các nhóm API nghiệp vụ</h2>
+
+  <h3>4.7.1. Nhóm API Xác thực và Quản lý tài khoản</h3>
+  <p><b>1. POST /api/auth/setup (Khởi tạo tài khoản quản trị đầu tiên)</b></p>
+  <pre>Request:
+POST /api/auth/setup HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Ngô Minh Đức",
+  "email": "swallownest59@gmail.com",
+  "password": "MatKhauBaoMat123@"
+}
+
+Response (200 OK):
+{
+  "id": 1,
+  "name": "Ngô Minh Đức",
+  "email": "swallownest59@gmail.com",
+  "username": "minhduc",
+  "role": "ADMIN"
+}</pre>
+
+  <p><b>2. POST /api/auth/login (Đăng nhập hệ thống)</b></p>
+  <pre>Request:
+POST /api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "swallownest59@gmail.com",
+  "password": "MatKhauBaoMat123@"
+}
+
+Response Headers:
+Set-Cookie: iot_session=a7f29c...; Path=/; HttpOnly; SameSite=Strict; Max-Age=86400</pre>
+
+  <p><b>3. GET /api/profile (Lấy thông tin hồ sơ cá nhân)</b></p>
+  <pre>Response (200 OK):
+{
+  "id": 1,
+  "name": "Ngô Minh Đức",
+  "email": "swallownest59@gmail.com",
+  "username": "minhduc",
+  "phone": "0987654321",
+  "role": "ADMIN",
+  "avatar": "data:image/png;base64,iVBORw0KGgo...",
+  "github": "https://github.com/swallownest59",
+  "figma": "http://localhost:5173/figma-design.html",
+  "architecture": "http://localhost:5173/system-architecture.html"
+}</pre>
+
+  <h3>4.7.2. Nhóm API Giám sát và Dữ liệu Cảm biến</h3>
+  <p><b>1. GET /api/sensors/latest (Lấy mẫu cảm biến mới nhất)</b></p>
+  <pre>Response (200 OK):
+{
+  "temperature": 28.2,
+  "humidity": 68.4,
+  "light": "DARK",
+  "light_raw": 1,
+  "at": "2026-11-10T02:37:39.000Z"
+}</pre>
+
+  <p><b>2. GET /api/sensors/records (Tra cứu lịch sử dữ liệu cảm biến)</b></p>
+  <pre>Request:
+GET /api/sensors/records?type=temperature&page=1&limit=5 HTTP/1.1
+
+Response (200 OK):
+{
+  "items": [
+    {
+      "id": "18066-temperature",
+      "sensor": "Nhiệt độ",
+      "type": "temperature",
+      "value": "28.20",
+      "unit": "°C",
+      "createdAt": "2026-11-10T02:37:39.000Z"
+    }
+  ],
+  "total": 120,
+  "page": 1,
+  "limit": 5,
+  "pages": 24
+}</pre>
+
+  <h3>4.7.3. Nhóm API Điều khiển và Lịch sử Thiết bị</h3>
+  <p><b>1. POST /api/devices/command (Gửi lệnh điều khiển LED)</b></p>
+  <pre>Request:
+POST /api/devices/command HTTP/1.1
+Content-Type: application/json
+
+{
+  "command": "led 1 on"
+}
+
+Response (200 OK):
+{
+  "ok": true,
+  "status": {
+    "led1": "ON",
+    "led2": "OFF",
+    "led3": "OFF",
+    "pendingCommand": ""
+  },
+  "mode": "REAL",
+  "message": "Đã thực hiện: led 1 on"
+}</pre>
+
+  <p><b>2. GET /api/devices/history (Tra cứu lịch sử bật/tắt thiết bị)</b></p>
+  <pre>Request:
+GET /api/devices/history?led=1&page=1&limit=5 HTTP/1.1
+
+Response (200 OK):
+{
+  "items": [
+    {
+      "id": 33,
+      "led": 1,
+      "device": "LED 1",
+      "user": "Ngô Minh Đức",
+      "action": "ON",
+      "result": "ON",
+      "source": "WEB",
+      "createdAt": "2026-11-10T02:37:39.000Z"
+    }
+  ],
+  "total": 33,
+  "page": 1,
+  "limit": 5,
+  "pages": 7
+}</pre>
+
+  <h2>4.8. An toàn bảo mật và chuẩn mã hóa dữ liệu</h2>
+  <ol>
+    <li><b>Bảo mật mật khẩu (scrypt hashing):</b> Sử dụng hàm băm một chiều an toàn <code>crypto.scryptSync</code> với muối (salt) ngẫu nhiên 16 bytes. Mật khẩu lưu trữ không thể đảo ngược và trường <code>passwordHash</code> được loại bỏ hoàn toàn trong mọi phản hồi API gửi về trình duyệt.</li>
+    <li><b>Bảo vệ phiên đăng nhập:</b> Cookie phiên <code>iot_session</code> mang đầy đủ cờ bảo mật <code>HttpOnly</code> (ngăn chặn JavaScript đọc cắp cookie qua tấn công XSS) và <code>SameSite=Strict</code> (ngăn chặn gửi cookie tự động trong các cuộc tấn công CSRF).</li>
+    <li><b>Kiểm tra an toàn dữ liệu ảnh tải lên (Magic Bytes):</b> Hệ thống không tin tưởng vào phần mở rộng tệp tin của người dùng mà đọc trực tiếp các byte đầu tiên của tệp tin nhị phân (chữ ký Magic Bytes):
+      <ul>
+        <li>Tệp PNG hợp lệ: bắt đầu bằng 8 bytes <code>89 50 4E 47 0D 0A 1A 0A</code>.</li>
+        <li>Tệp JPEG hợp lệ: bắt đầu bằng 3 bytes <code>FF D8 FF</code>.</li>
+        <li>Kích thước ảnh đại diện được giới hạn tối đa 2 MB để chống tràn bộ nhớ đệm máy chủ.</li>
+      </ul>
+    </li>
+    <li><b>Chống tấn công XSS (Cross-Site Scripting):</b> Hàm <code>escapeHtml()</code> trong <code>frontend/src/common.js</code> mã hóa toàn bộ các ký tự đặc biệt nguy hiểm (<code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&quot;</code>, <code>&#39;</code>) trước khi gán dữ liệu vào DOM thông qua <code>innerHTML</code>.</li>
+    <li><b>Cơ chế sao lưu dữ liệu tự động (Auto-Backup):</b> Module <code>backend/src/backup-db.js</code> tự động sao lưu tệp cơ sở dữ liệu <code>iot.db</code> sang thư mục <code>backend/prisma/backups/</code> kèm nhãn thời gian ISO trước mỗi lần máy chủ khởi động, đảm bảo an toàn tuyệt đối cho toàn bộ dữ liệu lịch sử đo đạc và thao tác.</li>
+  </ol>
+
+  <hr style="border:0;border-top:1pt solid #cbd5e1;margin:20pt 0;" />
+  <p style="text-align:right;font-style:italic;font-size:11.5pt;">Báo cáo học phần IoT và Ứng dụng — Sinh viên: Ngô Minh Đức (B23DCCN174)</p>
+
+</div>
+</body>
+</html>
