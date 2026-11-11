@@ -1,0 +1,406 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8" />
+<title>ĐẶC TẢ VÀ KỊCH BẢN KIỂM THỬ UC08: QUẢN LÝ HỒ SƠ VÀ MẬT KHẨU - Ngô Minh Đức B23DCCN174</title>
+<!--[if gte mso 9]>
+<xml>
+  <w:WordDocument>
+    <w:View>Print</w:View>
+    <w:Zoom>100</w:Zoom>
+    <w:DoNotOptimizeForBrowser/>
+  </w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  @page Section1 {
+    size: 21cm 29.7cm;
+    margin: 2.5cm 2.0cm 2.5cm 3.0cm;
+    mso-header-margin: 36.0pt;
+    mso-footer-margin: 36.0pt;
+    mso-paper-source: 0;
+  }
+  div.Section1 { page: Section1; }
+  body {
+    font-family: "Times New Roman", serif;
+    font-size: 13pt;
+    color: #0f172a;
+    line-height: 1.45;
+  }
+  h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #0f172a;
+    margin-top: 20pt;
+    margin-bottom: 8pt;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #0369a1;
+    margin-top: 16pt;
+    margin-bottom: 6pt;
+  }
+  h3 {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #0f172a;
+    margin-top: 12pt;
+    margin-bottom: 4pt;
+  }
+  p {
+    margin-top: 0pt;
+    margin-bottom: 6pt;
+    text-align: justify;
+    line-height: 1.45;
+  }
+  ul, ol {
+    margin-top: 2pt;
+    margin-bottom: 6pt;
+    padding-left: 20pt;
+  }
+  li {
+    margin-bottom: 3pt;
+    line-height: 1.4;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 8pt;
+    margin-bottom: 12pt;
+    font-size: 11.5pt;
+  }
+  th {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    font-weight: bold;
+    border: 1pt solid #94a3b8;
+    padding: 6pt 8pt;
+    text-align: left;
+  }
+  td {
+    border: 1pt solid #cbd5e1;
+    padding: 5pt 8pt;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+  pre, code {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 10.5pt;
+  }
+  pre {
+    background-color: #f1f5f9;
+    border: 1pt solid #cbd5e1;
+    padding: 8pt 10pt;
+    margin-top: 4pt;
+    margin-bottom: 8pt;
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.3;
+  }
+  .box-info {
+    border: 1.5pt solid #0284c7;
+    background-color: #f0f9ff;
+    padding: 12pt 16pt;
+    margin-bottom: 16pt;
+    border-radius: 4pt;
+  }
+  .table-title {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 12pt;
+    margin-top: 8pt;
+    margin-bottom: 4pt;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="Section1">
+
+  <!-- KHUNG THÔNG TIN HỌC VIỆN & SINH VIÊN -->
+  <div class="box-info">
+    <p style="text-align:center;font-weight:bold;font-size:14pt;margin-bottom:4pt;color:#0369a1;">HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG</p>
+    <p style="text-align:center;font-weight:bold;font-size:12.5pt;margin-bottom:12pt;">KHOA CÔNG NGHỆ THÔNG TIN 1</p>
+    <p style="text-align:center;font-weight:bold;font-size:15pt;color:#0f172a;margin-bottom:8pt;">BÁO CÁO HỌC PHẦN: IoT VÀ ỨNG DỤNG</p>
+    <p style="text-align:center;font-weight:bold;font-size:13.5pt;color:#0284c7;margin-bottom:12pt;">ĐỀ TÀI: XÂY DỰNG HỆ THỐNG IoT DASHBOARD GIÁM SÁT MÔI TRƯỜNG VÀ ĐIỀU KHIỂN THIẾT BỊ</p>
+    <table style="width:100%;border:none;margin:0;">
+      <tr style="background:none;"><td style="border:none;padding:2pt 0;"><b>Giảng viên hướng dẫn:</b></td><td style="border:none;padding:2pt 0;">Nguyễn Quốc Uy</td></tr>
+      <tr style="background:none;"><td style="border:none;padding:2pt 0;"><b>Sinh viên thực hiện:</b></td><td style="border:none;padding:2pt 0;">Ngô Minh Đức</td></tr>
+      <tr style="background:none;"><td style="border:none;padding:2pt 0;"><b>Mã sinh viên:</b></td><td style="border:none;padding:2pt 0;">B23DCCN174</td></tr>
+      <tr style="background:none;"><td style="border:none;padding:2pt 0;"><b>Email tài khoản:</b></td><td style="border:none;padding:2pt 0;">swallownest59@gmail.com</td></tr>
+    </table>
+  </div>
+
+  <hr style="border:0;border-top:1.5pt solid #0369a1;margin:16pt 0;" />
+
+  <h1>ĐẶC TẢ CHI TIẾT VÀ KỊCH BẢN KIỂM THỬ USE CASE</h1>
+  <h2 style="text-align:center;color:#0f172a;">UC08: QUẢN LÝ HỒ SƠ VÀ MẬT KHẨU</h2>
+
+  <h2>1. Bảng đặc tả Use Case tổng quát</h2>
+
+  <p class="table-title">Bảng 3.8. Đặc tả Use Case UC08 – Quản lý hồ sơ và đổi mật khẩu</p>
+  <table>
+    <tbody>
+      <tr>
+        <th style="width:25%;">Mã và tên Use Case</th>
+        <td><b>UC08 – Quản lý hồ sơ và đổi mật khẩu</b></td>
+      </tr>
+      <tr>
+        <th>Tác nhân chính</th>
+        <td>Người dùng (Quản trị viên hệ thống)</td>
+      </tr>
+      <tr>
+        <th>Mục tiêu</th>
+        <td>Cho phép người dùng xem thông tin tài khoản hiện tại, cập nhật họ tên, username, email, số điện thoại, ảnh đại diện vuông 256×256, quản lý 3 liên kết đồ án (GitHub, Figma Design, System Architecture) và thực hiện đổi mật khẩu bảo mật.</td>
+      </tr>
+      <tr>
+        <th>Mức độ ưu tiên</th>
+        <td>Trung bình (Medium)</td>
+      </tr>
+      <tr>
+        <th>Tiền điều kiện</th>
+        <td>
+          <ul>
+            <li>Người dùng đã đăng nhập thành công vào hệ thống.</li>
+            <li>Phiên làm việc (Cookie <code>iot_session</code>) còn thời hạn hiệu lực.</li>
+            <li>Máy chủ Backend (cổng 4000) và CSDL SQLite đang hoạt động ổn định.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Hậu điều kiện</th>
+        <td>
+          <ul>
+            <li>Thông tin hồ sơ cá nhân trong bảng <code>User</code> được cập nhật chính xác.</li>
+            <li>Mật khẩu mới được băm bằng thuật toán <code>scrypt</code> và lưu trữ an toàn.</li>
+            <li>Các phiên đăng nhập cũ bị thu hồi để đảm bảo an toàn tài khoản.</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Luồng sự kiện chính (Basic Flow)</h2>
+
+  <h3>Phân hệ 1: Xem và chỉnh sửa hồ sơ cá nhân</h3>
+  <ol>
+    <li>Người dùng chọn mục <b>Hồ sơ cá nhân</b> trên thanh điều hướng Sidebar (dẫn đến tệp <code>profile.html</code>).</li>
+    <li>Mã nguồn JavaScript (<code>profile.js</code>) tự động gọi hàm <code>initDashboardLayout()</code> và gửi yêu cầu <code>GET /api/profile</code> kèm cookie phiên.</li>
+    <li>Backend kiểm tra tính hợp lệ của cookie <code>iot_session</code>, truy vấn thông tin người dùng trong CSDL và phản hồi dữ liệu JSON (đã loại bỏ trường nhạy cảm <code>passwordHash</code>).</li>
+    <li>Frontend hiển thị thông tin ở chế độ xem: Ảnh đại diện, Họ tên, Tên tài khoản, Email, Số điện thoại, Vai trò quản trị và 3 thẻ liên kết dự án (GitHub Repository, Figma Design, System Architecture).</li>
+    <li>Người dùng bấm nút <b>"Chỉnh sửa hồ sơ"</b>. Giao diện ẩn khối xem và hiển thị form chỉnh sửa kèm các giá trị hiện thời.</li>
+    <li>Người dùng cập nhật thông tin:
+      <ul>
+        <li>Sửa Họ tên, Tên tài khoản, Email, Số điện thoại.</li>
+        <li>Cập nhật các liên kết dự án: GitHub, Figma, System Architecture.</li>
+        <li>Tải ảnh mới từ máy tính: Trình duyệt sử dụng đối tượng HTML5 Canvas để tự động cắt ảnh vuông kích thước 256×256 pixel ở giữa khung hình và nén định dạng JPEG Base64 (chất lượng 0.88).</li>
+      </ul>
+    </li>
+    <li>Người dùng bấm <b>"Lưu thay đổi"</b>.</li>
+    <li>Frontend gửi yêu cầu <code>PUT /api/profile</code> với payload JSON chứa dữ liệu mới cập nhật.</li>
+    <li>Backend xác thực dữ liệu qua thư viện <b>Zod</b> (kiểm tra định dạng email, username, độ dài chuỗi và kiểm tra chữ ký nhị phân Magic Bytes của ảnh đại diện).</li>
+    <li>Backend cập nhật bản ghi trong cơ sở dữ liệu SQLite và trả về đối tượng hồ sơ mới.</li>
+    <li>Frontend đóng chế độ chỉnh sửa, hiển thị lại hồ sơ mới và hiện thông báo Toast: <i>"Đã lưu thông tin và ảnh đại diện"</i>.</li>
+  </ol>
+
+  <h3>Phân hệ 2: Đổi mật khẩu tài khoản</h3>
+  <ol>
+    <li>Tại khu vực <b>"Đổi mật khẩu"</b> bên dưới trang hồ sơ, người dùng nhập:
+      <ul>
+        <li>Mật khẩu hiện tại (Mật khẩu cũ)</li>
+        <li>Mật khẩu mới (độ dài từ 8 đến 128 ký tự)</li>
+        <li>Xác nhận mật khẩu mới</li>
+      </ul>
+    </li>
+    <li>Người dùng có thể bấm vào icon "con mắt" để ẩn/hiện mật khẩu trong quá trình nhập.</li>
+    <li>Người dùng bấm nút <b>"Đổi mật khẩu"</b>.</li>
+    <li>Frontend kiểm tra sơ bộ: Mật khẩu mới và xác nhận mật khẩu phải trùng khớp nhau.</li>
+    <li>Frontend gửi yêu cầu <code>PUT /api/profile/password</code> chứa JSON:
+      <pre>{ "currentPassword": "...", "newPassword": "...", "confirmPassword": "..." }</pre>
+    </li>
+    <li>Backend kiểm tra mật khẩu hiện tại bằng hàm <code>verifyPassword()</code> so khớp với <code>passwordHash</code> lưu trong CSDL.</li>
+    <li>Backend kiểm tra mật khẩu mới phải khác mật khẩu hiện tại.</li>
+    <li>Backend băm mật khẩu mới bằng thuật toán an toàn <code>crypto.scryptSync</code> với muối (salt) ngẫu nhiên 16 bytes.</li>
+    <li>Backend thực thi câu lệnh cập nhật CSDL có điều kiện (Conditional Update) để chống xung đột dữ liệu:
+      <pre>prisma.user.updateMany({ where: { id: user.id, passwordHash: user.passwordHash }, data: { passwordHash: newHash } })</pre>
+    </li>
+    <li>Backend xóa toàn bộ các phiên làm việc của người dùng trong bộ nhớ cache (<code>sessions.delete</code>), xóa cookie <code>iot_session</code> và gửi tín hiệu ngắt kết nối WebSocket Socket.IO.</li>
+    <li>Frontend nhận phản hồi <code>{ "ok": true }</code>, xóa trắng form mật khẩu và hiển thị thông báo: <i>"Đã đổi mật khẩu. Vui lòng đăng nhập lại bằng mật khẩu mới"</i>.</li>
+    <li>Sau 1.5 giây, trình duyệt tự động chuyển hướng người dùng về trang <code>login.html</code> để thực hiện đăng nhập lại.</li>
+  </ol>
+
+  <h2>3. Luồng thay thế và xử lý ngoại lệ (Alternative & Exception Flows)</h2>
+  <ul>
+    <li><b>Hết hạn phiên đăng nhập:</b> Nếu phiên làm việc hết hạn hoặc máy chủ Backend đã khởi động lại, request trả về mã lỗi <code>401 Unauthorized</code>. Frontend lập tức chuyển hướng người dùng về <code>login.html</code>.</li>
+    <li><b>Tệp ảnh không đúng định dạng hoặc vượt quá 5 MB:</b> Nếu người dùng chọn file không phải JPEG/PNG/WebP hoặc dung lượng lớn hơn 5 MB, hàm <code>handleChooseAvatar()</code> từ chối đọc file và báo lỗi: <i>"Chọn ảnh JPG, PNG hoặc WebP không quá 5 MB"</i>.</li>
+    <li><b>Trùng lặp Email hoặc Username:</b> Nếu người dùng sửa Email hoặc Username trùng với một tài khoản khác trong hệ thống, CSDL SQLite ném lỗi mã <code>P2002</code>, Backend trả về mã lỗi <code>409 Conflict</code>: <i>"Tài khoản hoặc email đã được sử dụng"</i>.</li>
+    <li><b>Mạo danh định dạng tệp ảnh (File Extension Spoofing):</b> Nếu người dùng cố tình đổi tên tệp thực thi độc hại (ví dụ <code>virus.exe</code> đổi thành <code>avatar.png</code>), hàm kiểm tra chữ ký nhị phân <code>validAvatar()</code> trên Backend sẽ phát hiện chuỗi byte đầu không khớp với chữ ký PNG (<code>89 50 4E 47</code>) hay JPEG (<code>FF D8 FF</code>), từ chối lưu và trả về mã lỗi <code>400 Bad Request</code>.</li>
+    <li><b>Xác nhận mật khẩu mới không khớp:</b> Frontend phát hiện mật khẩu mới và xác nhận mật khẩu không giống nhau, dừng gửi request và hiển thị: <i>"Mật khẩu xác nhận không khớp"</i>.</li>
+    <li><b>Nhập sai mật khẩu hiện tại:</b> Backend xác minh thất bại, phản hồi mã lỗi <code>400 Bad Request</code>: <i>"Mật khẩu hiện tại không đúng"</i>. Form giữ nguyên dữ liệu để người dùng nhập lại.</li>
+    <li><b>Mật khẩu mới trùng với mật khẩu cũ:</b> Backend từ chối xử lý và trả về mã lỗi <code>400 Bad Request</code>: <i>"Mật khẩu mới phải khác mật khẩu hiện tại"</i>.</li>
+  </ul>
+
+  <h2>4. Các quy tắc nghiệp vụ cốt lõi (Business Rules)</h2>
+  <ol>
+    <li><b>Tối ưu xử lý đồ họa tại Client:</b> Toàn bộ thao tác cắt vuông và nén ảnh đại diện được thực thi trực tiếp trên trình duyệt bằng Canvas API, giảm thiểu 90% băng thông tải lên và giải phóng CPU cho máy chủ Backend.</li>
+    <li><b>Nguyên tắc bảo vệ dữ liệu nhạy cảm:</b> Trường <code>passwordHash</code> không bao giờ được phép xuất hiện trong bất kỳ API response nào trả về cho phía Frontend.</li>
+    <li><b>Thu hồi phiên đăng nhập phân tán (Session Revocation):</b> Khi mật khẩu được thay đổi thành công, hệ thống bắt buộc phải thu hồi ngay lập tức toàn bộ các phiên làm việc và đóng các kết nối Socket.IO đang mở của người dùng đó trên tất cả các trình duyệt.</li>
+  </ol>
+
+  <h2>5. Sơ đồ tuần tự xử lý Use Case (Sequence Diagram)</h2>
+  <p>Sơ đồ tuần tự minh họa chi tiết luồng tương tác giữa 4 thành phần: <b>Người dùng</b>, <b>Frontend (profile.js)</b>, <b>Backend (Express API)</b> và <b>Cơ sở dữ liệu (SQLite/Prisma)</b>:</p>
+
+  <p class="table-title">Bảng 3.9. Trình tự các bước thực thi trong sơ đồ tuần tự UC08</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:10%;">Bước</th>
+        <th style="width:25%;">Từ &rarr; Đến</th>
+        <th style="width:65%;">Chi tiết thông điệp và hành động xử lý</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1 &ndash; 2</td>
+        <td>Người dùng &rarr; Frontend &rarr; Backend</td>
+        <td>Người dùng truy cập trang Hồ sơ; Frontend gửi request <code>GET /api/profile</code> kèm cookie phiên <code>iot_session</code>.</td>
+      </tr>
+      <tr>
+        <td>3 &ndash; 6</td>
+        <td>Backend &harr; Database &rarr; Frontend &rarr; User</td>
+        <td>Backend tra cứu User theo ID phiên, trả dữ liệu JSON (đã ẩn hash mật khẩu); Frontend render giao diện xem và 3 liên kết dự án.</td>
+      </tr>
+      <tr>
+        <td>7 &ndash; 8</td>
+        <td>Người dùng &rarr; Frontend</td>
+        <td>Người dùng chọn ảnh mới và sửa thông tin; Frontend dùng HTML5 Canvas cắt ảnh vuông 256×256 Base64.</td>
+      </tr>
+      <tr>
+        <td>9 &ndash; 14</td>
+        <td>Frontend &harr; Backend &harr; Database</td>
+        <td>Gửi <code>PUT /api/profile</code>; Backend kiểm tra Zod + Magic Bytes; cập nhật CSDL; phản hồi hồ sơ mới; Frontend hiện thông báo Toast thành công.</td>
+      </tr>
+      <tr>
+        <td>15 &ndash; 16</td>
+        <td>Người dùng &rarr; Frontend</td>
+        <td>Người dùng nhập mật khẩu cũ, mật khẩu mới, xác nhận mật khẩu; Frontend kiểm tra tính khớp của 2 ô mật khẩu mới.</td>
+      </tr>
+      <tr>
+        <td>17 &ndash; 20</td>
+        <td>Frontend &rarr; Backend &harr; Database</td>
+        <td>Gửi <code>PUT /api/profile/password</code>; Backend lấy <code>passwordHash</code> hiện tại, gọi <code>verifyPassword()</code> kiểm tra, băm mật khẩu mới bằng <code>scrypt</code>.</td>
+      </tr>
+      <tr>
+        <td>21 &ndash; 24</td>
+        <td>Backend &harr; Database &rarr; Frontend &rarr; User</td>
+        <td>Backend cập nhật hash mới vào CSDL, hủy mọi phiên trong bộ nhớ, trả về <code>{ ok: true }</code>; Frontend hiển thị thông báo thành công và chuyển hướng về <code>login.html</code> sau 1.5 giây.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>6. Bảng kịch bản kiểm thử chi tiết (Test Cases)</h2>
+
+  <p class="table-title">Bảng 3.10. Danh mục các ca kiểm thử chi tiết cho Use Case UC08</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:12%;">Mã kiểm thử</th>
+        <th style="width:23%;">Tên ca kiểm thử</th>
+        <th style="width:25%;">Dữ liệu đầu vào</th>
+        <th style="width:30%;">Kết quả mong đợi</th>
+        <th style="width:10%;">Đánh giá</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>TC_UC08_01</b></td>
+        <td>Xem hồ sơ khi đã đăng nhập hợp lệ</td>
+        <td>Cookie phiên <code>iot_session</code> còn hạn</td>
+        <td>Hiển thị đúng họ tên, email, vai trò, ảnh và 3 liên kết dự án; mã HTTP 200.</td>
+        <td style="color:#059669;font-weight:bold;">ĐẠT</td>
+      </tr>
+      <tr>
+        <td><b>TC_UC08_02</b></td>
+        <td>Xem hồ sơ khi chưa đăng nhập</td>
+        <td>Không gửi kèm cookie phiên</td>
+        <td>Trả về mã lỗi HTTP 401 Unauthorized; trình duyệt tự động chuyển về trang login.html.</td>
+        <td style="color:#059669;font-weight:bold;">ĐẠT</td>
+      </tr>
+      <tr>
+        <td><b>TC_UC08_03</b></td>
+        <td>Cập nhật hồ sơ với dữ liệu hợp lệ</td>
+        <td>Tên: "Ngô Minh Đức", Phone: "0987654321", GitHub/Figma URL hợp lệ</td>
+        <td>Lưu thành công vào SQLite; giao diện cập nhật thông tin mới và hiện Toast thành công.</td>
+        <td style="color:#059669;font-weight:bold;">ĐẠT</td>
+      </tr>
+      <tr>
+        <td><b>TC_UC08_04</b></td>
+        <td>Tải ảnh đại diện PNG/JPG hợp lệ</td>
+        <td>File ảnh phong cảnh tỉ lệ 16:9 dung lượng 2.5 MB</td>
+        <td>Canvas tự động cắt vuông 256×256 ở giữa; Backend chấp nhận Magic Bytes và cập nhật avatar.</td>
+        <td style="color:#059669;font-weight:bold;">ĐẠT</td>
+      </tr>
+      <tr>
+        <td><b>TC_UC08_05</b></td>
+        <td>Tải ảnh vượt quá dung lượng cho phép</td>
+        <td>File ảnh có dung lượng &gt; 5 MB</td>
+        <td>Frontend chặn đọc file; hiển thị thông báo lỗi yêu cầu chọn ảnh dưới 5 MB.</td>
+        <td style="color:#059669;font-weight:bold;">ĐẠT</td>
+      </tr>
+      <tr>
+        <td><b>TC_UC08_06</b></td>
+        <td>Tải tệp tin độc hại giả mạo đuôi ảnh</td>
+        <td>File thực thi <code>script.bat</code> đổi tên thành <code>avatar.png</code></td>
+        <td>Backend kiểm tra chữ ký Magic Bytes thất bại; trả mã lỗi HTTP 400 Bad Request.</td>
+        <td style="color:#059669;font-weight:bold;">ĐẠT</td>
+      </tr>
+      <tr>
+        <td><b>TC_UC08_07</b></td>
+        <td>Cập nhật trùng Email hoặc Username</td>
+        <td>Nhập email đã thuộc về một tài khoản khác trong hệ thống</td>
+        <td>Backend ném lỗi vi phạm Unique constraint; trả về mã lỗi HTTP 409 Conflict.</td>
+        <td style="color:#059669;font-weight:bold;">ĐẠT</td>
+      </tr>
+      <tr>
+        <td><b>TC_UC08_08</b></td>
+        <td>Đổi mật khẩu thành công</td>
+        <td>Đúng mật khẩu cũ; mật khẩu mới 10 ký tự; xác nhận trùng khớp</td>
+        <td>CSDL cập nhật hash scrypt mới; thu hồi mọi phiên; tự động chuyển sang trang đăng nhập.</td>
+        <td style="color:#059669;font-weight:bold;">ĐẠT</td>
+      </tr>
+      <tr>
+        <td><b>TC_UC08_09</b></td>
+        <td>Đổi mật khẩu với mật khẩu hiện tại sai</td>
+        <td>Nhập sai mật khẩu đang sử dụng</td>
+        <td>Backend trả về mã lỗi HTTP 400: "Mật khẩu hiện tại không đúng"; mật khẩu không bị đổi.</td>
+        <td style="color:#059669;font-weight:bold;">ĐẠT</td>
+      </tr>
+      <tr>
+        <td><b>TC_UC08_10</b></td>
+        <td>Mật khẩu mới trùng mật khẩu cũ</td>
+        <td>Nhập mật khẩu mới giống hệt mật khẩu hiện tại</td>
+        <td>Backend trả về mã lỗi HTTP 400: "Mật khẩu mới phải khác mật khẩu hiện tại".</td>
+        <td style="color:#059669;font-weight:bold;">ĐẠT</td>
+      </tr>
+      <tr>
+        <td><b>TC_UC08_11</b></td>
+        <td>Xác nhận mật khẩu mới không khớp</td>
+        <td>Mật khẩu mới: <code>MatKhauMoi123@</code>, Xác nhận: <code>KhongKhop123@</code></td>
+        <td>Frontend chặn form gửi đi; hiển thị cảnh báo đỏ: "Mật khẩu xác nhận không khớp".</td>
+        <td style="color:#059669;font-weight:bold;">ĐẠT</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr style="border:0;border-top:1pt solid #cbd5e1;margin:20pt 0;" />
+  <p style="text-align:right;font-style:italic;font-size:11.5pt;">Tài liệu đặc tả Use Case — Sinh viên: Ngô Minh Đức (B23DCCN174)</p>
+
+</div>
+</body>
+</html>
