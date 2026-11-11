@@ -24,7 +24,6 @@ const editPhone = document.getElementById('edit-phone');
 const editGithub = document.getElementById('edit-github');
 const editFigma = document.getElementById('edit-figma');
 const editArchitecture = document.getElementById('edit-architecture');
-const editPdf = document.getElementById('edit-pdf');
 
 function showMessage(text) {
   if (!text) {
@@ -70,7 +69,6 @@ function renderProfile() {
   renderLink('view-github', profile.github);
   renderLink('view-figma', profile.figma);
   renderLink('view-architecture', profile.architecture);
-  renderLink('view-pdf', profile.pdf || '/bao-cao-iot.pdf');
 }
 
 function openEditMode() {
@@ -84,7 +82,6 @@ function openEditMode() {
   editGithub.value = profile.github || '';
   editFigma.value = profile.figma || '';
   editArchitecture.value = profile.architecture || '';
-  editPdf.value = profile.pdf || '';
 
   btnRemoveAvatar.style.display = draftAvatar ? 'inline-flex' : 'none';
   viewBox.style.display = 'none';
@@ -187,7 +184,6 @@ async function startProfilePage() {
         github: editGithub.value,
         figma: editFigma.value,
         architecture: editArchitecture.value,
-        pdf: editPdf.value,
         avatar: draftAvatar,
       };
       profile = await api('/profile', {
