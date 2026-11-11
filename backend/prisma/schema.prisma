@@ -38,6 +38,7 @@ model User {
   github       String @default("")
   figma        String @default("")
   architecture String @default("")
+  pdf          String @default("")
 }
 
 model Users {
@@ -49,6 +50,7 @@ model Users {
   github             String         @default("")
   figma              String         @default("")
   system_architecture String        @default("") @map("System Architecture")
+  pdf                String         @default("")
   role               String         @default("ADMIN")
   created_at         DateTime       @default(now())
   updated_at         DateTime       @updatedAt

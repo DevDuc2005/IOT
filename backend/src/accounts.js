@@ -30,10 +30,10 @@ export function accounts(app,prisma,onPasswordChanged=()=>{}) {
   next();
  }));
  app.get('/api/profile',(req,res)=>res.json(safe(req.user)));
- const link=z.string().max(1000).refine(v=>!v||/^https?:\/\//.test(v),'Liên kết phải bắt đầu bằng http:// hoặc https://');
+ const link=z.string().max(1000).refine(v=>!v||/^https?:\/\//.test(v)||v.startsWith('/'),'Liên kết phải bắt đầu bằng http://, https:// hoặc /');
  const username=z.string().trim().toLowerCase().max(40).refine(v=>!v||/^[a-z0-9_.-]{3,40}$/.test(v),'Tài khoản gồm 3–40 ký tự: chữ không dấu, số, dấu chấm, gạch dưới hoặc gạch ngang');
  app.put('/api/profile',wrap(async(req,res)=>{
-  const data=z.object({name:z.string().trim().min(1).max(100),email:z.string().email().max(200),username,avatar:z.string().max(400100).refine(validAvatar,'Ảnh đại diện phải là JPEG/PNG, tối đa 300 KB sau xử lý'),phone:z.string().max(30),github:link,figma:link,architecture:link}).parse(req.body);
+  const data=z.object({name:z.string().trim().min(1).max(100),email:z.string().email().max(200),username,avatar:z.string().max(400100).refine(validAvatar,'Ảnh đại diện phải là JPEG/PNG, tối đa 300 KB sau xử lý'),phone:z.string().max(30),github:link,figma:link,architecture:link,pdf:link}).parse(req.body);
   data.email=data.email.toLowerCase();
   try{res.json(safe(await prisma.user.update({where:{id:req.user.id},data:{...data,username:data.username||null}})))}catch(error){if(error.code==='P2002')throw Object.assign(new Error('Tài khoản hoặc email đã được sử dụng'),{status:409});throw error}
  }));
